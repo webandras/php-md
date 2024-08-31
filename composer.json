@@ -1,0 +1,13 @@
+{
+    "name": "gulan/phpmd_blog",
+    "authors": [
+        {
+            "name": "Gulácsi András",
+            "email": "guland@protonmail.com"
+        }
+    ],
+    "require": {
+        "league/commonmark": "2.5",
+        "symfony/yaml": "^7.1"
+    }
+}
