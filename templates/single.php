@@ -14,7 +14,7 @@
 <body>
 
 <main class="container">
-	<?= $post['content'] ?>
+	<?= $content ?>
 </main>
 
 </body>

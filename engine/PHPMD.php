@@ -17,6 +17,12 @@ class PHPMD {
 	private MarkdownConverter $converter;
 
 
+    /**
+     * @var array
+     */
+    public array $posts = [];
+
+
 	/**
 	 * @var string
 	 */
@@ -43,67 +49,73 @@ class PHPMD {
 
 
 	/**
-	 * @param  RenderedContentWithFrontMatter  $result
+     * Grab the post content
+     *
+     * @param  RenderedContentWithFrontMatter  $result
+	 *
 	 * @return string
 	 */
 	public function getPostContent(RenderedContentWithFrontMatter $result): string
 	{
-		// Grab the post content
 		return $result->getContent();
 	}
 
+
 	/**
+     * Grab the front matter
+     *
 	 * @param  RenderedContentWithFrontMatter  $result
 	 * @return array
 	 */
 	public function getPostFrontMatter(RenderedContentWithFrontMatter $result): array
 	{
-		// Grab the front matter
 		return $result->getFrontMatter();
 	}
 
 
-	/**
-	 * @param  string  $filePath
-	 * @param  string  $destinationDirectory
-	 * @param  array  $data
-	 * @return bool
-	 */
-	public function savePost(string $filePath, string $destinationDirectory, array $data): bool
+    /**
+     * @param  string  $destinationDirectory
+     * @param  string  $content
+     * @param  string  $filePath
+     *
+     * @return bool
+     */
+    public function saveHtml(string $destinationDirectory, string $content, string $filePath = ''): bool
 	{
-		$filename = $this->getFileName($filePath);
+		$filename = ($filePath !== '') ?  $this->getFileName($filePath) : 'index';
 		$destinationFilePath = $destinationDirectory.$filename.'.html';
 
-		return file_put_contents($destinationFilePath, $data['content']) !== FALSE;
+		return file_put_contents($destinationFilePath, $content) !== FALSE;
 	}
 
 
 	/**
-	 * @param  array  $post
-	 * @return void
+	 * @param  array  $data
+	 * @return string
 	 */
-	public function setPostHeader(array &$post): void
+	public function addHeaderToContent(array $data): string
 	{
-		$headers = $post['frontmatter'];
-		$title = "<h1>{$headers['title']}</h1>";
-		$date = "<p>Posted by: {$headers['author']}, at <time>{$headers['date']}</time></p>";
-		$excerpt = "<p><b>{$headers['excerpt']}</b><p>";
-		$coverImage = '<img class="cover" src="'.BASE_URL.'public/assets/images/'.$headers['cover_image'].'" alt="'.$headers['title'].'">';
+        extract($data);
 
-		$post['content'] = $title.PHP_EOL.
-			$date.PHP_EOL.
-			$coverImage.PHP_EOL.
-			$excerpt.PHP_EOL.
-			$post['content'];
+		$title = "<h1>{$frontmatter['title']}</h1>";
+		$date = "<p>Posted by: {$frontmatter['author']}, at <time>{$frontmatter['date']}</time></p>";
+		$excerpt = "<p><b>{$frontmatter['excerpt']}</b><p>";
+		$coverImage = '<img class="cover" src="'.BASE_URL.'public/assets/images/'.$frontmatter['cover_image'].'" alt="'.$frontmatter['title'].'">';
+
+        return '<header>'.PHP_EOL.
+                $title.PHP_EOL.
+                $date.PHP_EOL.
+                $coverImage.PHP_EOL.
+                $excerpt.PHP_EOL.
+            '</header>'.PHP_EOL.
+            $content;
 	}
 
 
-	/**
-	 * @param  bool  $frontMatterOnly
-	 * @return array|null
-	 * @throws Exception
-	 */
-	public function generatePosts(bool $frontMatterOnly = FALSE): array|null
+    /**
+     * @return array|null
+     */
+	public function generatePosts(): array|null
 	{
 		$sourceDirectory = $this->rootDir.'/posts';
 		$destinationDirectory = $this->rootDir.'/public/posts/';
@@ -128,54 +140,79 @@ class PHPMD {
 
 			if ($result instanceof RenderedContentWithFrontMatter)
 			{
-				$frontMatter = $this->getPostFrontMatter($result);
+				$frontMatter = $this->transformFrontMatter(
+                    $this->getPostFrontMatter($result),
+                    $filePath
+                );
 
-				if ($frontMatterOnly === TRUE)
-				{
-					$frontMatter['slug'] = BASE_URL.'public/posts/'.$this->getFileName($filePath).'.html';
+                $this->posts[] = $frontMatter;
+                $data['frontmatter'] = $frontMatter;
+                $data['content'] = $this->getPostContent($result);
+                $content = $this->addHeaderToContent($data);
 
-					$date = $frontMatter['date'].':00';
+                ob_start();
+                require $this->rootDir.'/templates/single.php';
+                $content = ob_get_contents();
+                ob_end_clean();
 
-					try
-					{
-						$dt = new DateTime($date, new DateTimeZone('Europe/Budapest'));
-						$frontMatter['date'] = $dt->format('Y-m-d H:i');
-					} catch (Exception $ex)
-					{
-						if (ENV === 'dev')
-						{
-							var_dump($ex);
-						}
-						die;
-					}
+                $this->saveHtml($destinationDirectory, $content, $filePath);
+            }
 
-					$posts[] = $frontMatter;
-				} else
-				{
-					$post['frontmatter'] = $frontMatter;
-					$post['content'] = $this->getPostContent($result);
-
-					$this->setPostHeader($post);
-
-					ob_start();
-					require $this->rootDir.'/layouts/post.php';
-					$post['content'] = ob_get_contents();
-					ob_end_clean();
-
-					$this->savePost($filePath, $destinationDirectory, $post);
-				}
-			}
 		}
 
-		return $posts ?? NULL;
+		return $this->posts ?? NULL;
 	}
 
 
-	private function getFileName(string $filePath): string
+    /**
+     * @return void
+     */
+    public function generateIndexPage(): void
+    {
+        $destinationDirectory = $this->rootDir.'/public/';
+        $posts = $this->posts;
+
+        ob_start();
+        require $this->rootDir.'/templates/index.php';
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        $this->saveHtml($destinationDirectory, $content);
+    }
+
+
+    /**
+     * @param  string  $filePath
+     *
+     * @return string
+     */private function getFileName(string $filePath): string
 	{
 		$parts = explode('/', $filePath);
 		return substr($parts[sizeof($parts) - 1], 0, -3);
 	}
 
+
+    /**
+     * @param  array  $frontMatter
+     * @param  string  $filePath
+     *
+     * @return array|void
+     */
+    private function transformFrontMatter(array $frontMatter, string $filePath) {
+        $frontMatter['slug'] = BASE_URL.'public/posts/'.$this->getFileName($filePath).'.html';
+        $date = $frontMatter['date'].':00';
+
+        try {
+            $dt = new DateTime($date, new DateTimeZone('Europe/Budapest'));
+            $frontMatter['date'] = $dt->format('Y-m-d H:i');
+        } catch (Exception $ex) {
+            if (ENV === 'dev') {
+                var_dump($ex);
+            }
+            die;
+        }
+
+        return $frontMatter;
+    }
 
 }
