@@ -153,7 +153,7 @@ class PHPMD
                 $this->posts[]       = $frontMatter;
                 $data['frontmatter'] = $frontMatter;
                 $data['content']     = $this->getPostContent($result);
-                $content             = $this->addHeaderToContent($data);
+                $data['content']     = $this->addHeaderToContent($data);
 
                 ob_start();
                 require $this->rootDir.'/templates/single.php';
@@ -206,13 +206,11 @@ class PHPMD
      */
     private function transformFrontMatter(array $frontMatter, string $filePath)
     {
-        $frontMatter['slug'] = BASE_URL.'public/posts/'
-                               .$this->getFileName($filePath).'.html';
+        $frontMatter['slug'] = BASE_URL.'public/posts/'.$this->getFileName($filePath).'.html';
         $date                = $frontMatter['date'].':00';
 
         try {
-            $dt                  = new DateTime($date,
-                new DateTimeZone('Europe/Budapest'));
+            $dt = new DateTime($date, new DateTimeZone('Europe/Budapest'));
             $frontMatter['date'] = $dt->format('Y-m-d H:i');
         } catch (Exception $ex) {
             if (ENV === 'dev') {

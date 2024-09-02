@@ -8,7 +8,7 @@
     <link href="./assets/css/trongate.css" rel="stylesheet" type="text/css"/>
     <link href="./assets/css/main.css" rel="stylesheet" type="text/css"/>
 
-    <title>Newest posts</title>
+    <title><?= OUR_NAME ?>'s Blog</title>
 </head>
 
 <body>

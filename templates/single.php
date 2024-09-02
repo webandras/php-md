@@ -8,13 +8,13 @@
     <link href="./../assets/css/trongate.css" rel="stylesheet" type="text/css"/>
     <link href="./../assets/css/main.css" rel="stylesheet" type="text/css"/>
 
-    <title>Demo</title>
+    <title><?= $data['frontmatter']['title'] ?></title>
 </head>
 
 <body>
 
 <main class="container">
-    <?= $content ?>
+    <?= $data['content'] ?>
 </main>
 
 </body>
