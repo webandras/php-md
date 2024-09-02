@@ -1,4 +1,5 @@
 <?php
+
 // Settings to do with the identification of the site owner
 define('WEBSITE_NAME', 'PHP-MD Blog');
 define('OUR_NAME', 'Your Company Name');
@@ -9,4 +10,4 @@ define('DEFAULT_IMAGE', '/assets/images/static.jpg');
 
 
 define('WEBSITE_DESCRIPTION',
-	'A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any cheap shared hosting platforms.');
+    'A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any cheap shared hosting platforms.');
