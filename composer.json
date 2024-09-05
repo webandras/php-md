@@ -1,5 +1,8 @@
 {
-    "name": "gulan/phpmd_blog",
+    "name": "webandras/php-md",
+    "license": "MIT",
+    "version": "0.1.0",
+    "time": "2024-09-04",
     "authors": [
         {
             "name": "Gulácsi András",
