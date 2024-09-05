@@ -3,9 +3,9 @@ Copyright (c) 2019, David Connelly, MIT licence
 https://github.com/trongate/trongate-framework/blob/master/public/css/trongate.css
 */
 :root {
-    --primary: #4682b4;
-    --primary-dark: #38678f;
-    --primary-darker: #294d6b;
+    --primary: #307e97;
+    --primary-dark: #00607F;
+    --primary-darker: #0E5167;
     --primary-color: #fff;
     --secondary: #ff0000;
     --border: #c5c5c5;
