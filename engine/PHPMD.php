@@ -96,33 +96,6 @@ class PHPMD
 
 
     /**
-     * @param  array  $data
-     *
-     * @return string
-     */
-    public function addHeaderToContent(array $data): string
-    {
-        extract($data);
-
-        $title      = "<h1>{$frontmatter['title']}</h1>";
-        $date
-                    = "<p>Posted by: {$frontmatter['author']}, at <time>{$frontmatter['date']}</time></p>";
-        $excerpt    = "<p><b>{$frontmatter['excerpt']}</b><p>";
-        $coverImage = '<img class="cover" src="'.BASE_URL
-                      .'public/assets/images/'.$frontmatter['cover_image']
-                      .'" alt="'.$frontmatter['title'].'">';
-
-        return '<header>'.PHP_EOL.
-               $title.PHP_EOL.
-               $date.PHP_EOL.
-               $coverImage.PHP_EOL.
-               $excerpt.PHP_EOL.
-               '</header>'.PHP_EOL.
-               $content;
-    }
-
-
-    /**
      * @return array|null
      */
     public function generatePosts(): array|null
@@ -153,10 +126,9 @@ class PHPMD
                 $this->posts[]       = $frontMatter;
                 $data['frontmatter'] = $frontMatter;
                 $data['content']     = $this->getPostContent($result);
-                $data['content']     = $this->addHeaderToContent($data);
 
                 ob_start();
-                require $this->rootDir.'/templates/single.php';
+                require $this->rootDir.'/templates/views/single.php';
                 $content = ob_get_contents();
                 ob_end_clean();
 
@@ -177,7 +149,7 @@ class PHPMD
         $posts                = $this->posts;
 
         ob_start();
-        require $this->rootDir.'/templates/index.php';
+        require $this->rootDir.'/templates/views/index.php';
         $content = ob_get_contents();
         ob_end_clean();
 
