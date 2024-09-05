@@ -1,0 +1,21 @@
+# All paths
+/*
+    # Block site from being framed with X-Frame-Options
+    X-Frame-Options: DENY
+    X-XSS-Protection: 1; mode=block
+
+    # Prevent browsers from incorrectly detecting non-scripts as scripts
+    X-Content-Type-Options: nosniff
+
+    # only https
+    # Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+    # Never send the Referer header
+    Referrer-Policy: no-referrer
+
+    # Don't load any resource type not explicitly enabled
+    # Disable plugins like Flash or Silverlight
+    # Load images, scripts, stylesheets and fonts from self
+    # Send reports to report-uri.io
+    # Add your link to the end of the line: report-uri 
+    Content-Security-Policy: frame-ancestors 'self'; default-src 'none'; manifest-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net; font-src 'self' fonts.gstatic.com gstatic.com *.gstatic.com fonts.googleapis.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' identity.netlify.com unpkg.com/netlify-cms@%5E2.0.0/dist/netlify-cms.js cdn.jsdelivr.net cloudfront.net *.cloudfront.net; child-src 'self'; img-src 'self' cloudfront.net *.cloudfront.net api.netlify.com blob: data:; object-src 'none'; connect-src 'self' www.netlifystatus.com/api/v2/components.json identity.netlify.com unpkg.com/netlify-cms@%5E2.0.0/dist/netlify-cms.js *.algolia.net *.algolianet.com; base-uri 'none'; form-action 'self';
