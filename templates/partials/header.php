@@ -10,10 +10,10 @@
             <section id="navbar-default">
                 <ul>
                     <li>
-                        <a href="index.html" aria-current="page">Home</a>
+                        <a href="<?= BASE_URL ?>" aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="test.html">Test</a>
+                        <a href="<?= BASE_URL ?>test.html">Test</a>
                     </li>
                 </ul>
             </section>

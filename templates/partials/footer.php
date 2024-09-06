@@ -6,10 +6,10 @@
     <p><?= WEBSITE_DESCRIPTION ?></p>
     <ul class="footer--nav">
       <li>
-        <a href="index.html" aria-current="page">Home</a>
+        <a href="<?= BASE_URL ?>" aria-current="page">Home</a>
       </li>
       <li>
-        <a href="teszt.html">Test</a>
+        <a href="<?= BASE_URL ?>test.html">Test</a>
       </li>
     </ul>
     <aside class="footer--copyright">© <?= date('Y') ?> - <a href="<?= GITHUB ?>" class="hover:underline"><?= AUTHOR ?></a>. MIT license.</aside>
