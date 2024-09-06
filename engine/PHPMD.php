@@ -178,7 +178,7 @@ class PHPMD
      */
     private function transformFrontMatter(array $frontMatter, string $filePath)
     {
-        $frontMatter['slug'] = BASE_URL.'public/posts/'.$this->getFileName($filePath).'.html';
+        $frontMatter['slug'] = BASE_URL.'posts/'.$this->getFileName($filePath).'.html';
         $date                = $frontMatter['date'].':00';
 
         try {
