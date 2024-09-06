@@ -13,7 +13,7 @@
     <p><?= WEBSITE_DESCRIPTION ?></p>
     <div class="introduction-cta-row">
       <button id="deploy" role="button">
-        <img style="width: 24px; height: 24px; position: relative; top: 4px;" src="<?= BASE_URL . 'public/assets/images/netlify.png' ?>" alt="Netlify logo" />
+        <img style="width: 24px; height: 24px; position: relative; top: 4px;" src="<?= BASE_URL . 'assets/images/netlify.png' ?>" alt="Netlify logo" />
           <span>Deploy to Netlify</span>
       </button>
       <a href="<?= GITHUB ?>" class="link">

@@ -2,5 +2,3 @@
   base    = "/"
   publish = "public"
   command = "npm run publish"
-  NODE_VERSION = "16.14.0"
-  PHP_VERSION = "8.2"

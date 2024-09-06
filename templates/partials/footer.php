@@ -1,6 +1,6 @@
 <footer class="footer">
     <a class="footer--logo" href="<?= BASE_URL ?>">
-      <img src="<?= BASE_URL.'public/assets/images/php-md-logo.png' ?>" alt="<?= OUR_NAME ?>" style="height: 50px;" />
+      <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= OUR_NAME ?>" style="height: 50px;" />
     </a>
 
     <p><?= WEBSITE_DESCRIPTION ?></p>

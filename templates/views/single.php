@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= DEFAULT_LANGUAGE ?>">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link href="./../assets/css/trongate.css" rel="stylesheet" type="text/css"/>
-    <link href="./../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="<?= BASE_URL.'assets/css/trongate.css' ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= BASE_URL.'assets/css/main.css' ?>" rel="stylesheet" type="text/css"/>
 
     <title><?= $data['frontmatter']['title'] ?></title>
 
@@ -30,7 +30,8 @@
 require dirname(__DIR__).'/partials/header.php'; ?>
 
 <main class="container">
-    <?php require dirname(__DIR__).'/partials/breadcrumb.php'; ?>
+    <?php
+    require dirname(__DIR__).'/partials/breadcrumb.php'; ?>
     <article>
         <?php
         require dirname(__DIR__).'/partials/post-header.php'; ?>
@@ -44,7 +45,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
 <?php
 require dirname(__DIR__).'/partials/footer.php'; ?>
 
-<script src="./../assets/js/main.js"></script>
+<script src="<?= BASE_URL.'assets/js/main.js' ?>"></script>
 
 </body>
 </html>

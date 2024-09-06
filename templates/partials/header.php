@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="container container-lg">
-        <a href="<?= BASE_URL.'public/' ?>">
-            <img src="<?= BASE_URL.'public/assets/images/php-md-logo.png' ?>"
+        <a href="<?= BASE_URL ?>">
+            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>"
                  alt="<?= WEBSITE_NAME ?> logo" style="height: 50px;"/>
             <span></span>
         </a>
