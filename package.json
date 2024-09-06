@@ -2,9 +2,7 @@
   "name": "php-md",
   "version": "0.1.0",
   "description": "A PHP-based static site generator that uses pure PHP and Markdown.",
-  "main": "./publish.js",
   "scripts": {
-    "publish": "node ./publish.js",
     "webpack": "webpack",
     "webpack-watch": "webpack --watch",
     "liveserver": "browser-sync start --server 'public' --files 'public'"

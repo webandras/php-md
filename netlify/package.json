@@ -1,0 +1,19 @@
+{
+  "name": "php-md",
+  "version": "0.1.0",
+  "description": "A PHP-based static site generator that uses pure PHP and Markdown.",
+  "main": "./publish.js",
+  "scripts": {
+    "publish": "node ./publish.js",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webandras/php-md.git"
+  },
+  "author": "András Gulácsi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webandras/php-md/issues"
+  },
+  "homepage": "https://github.com/webandras/php-md#readme"
+}
