@@ -5,7 +5,8 @@
   "scripts": {
     "webpack": "webpack",
     "webpack-watch": "webpack --watch",
-    "liveserver": "browser-sync start --server 'public' --files 'public'"
+    "liveserver": "browser-sync start --server 'public' --files 'public'",
+    "publish": "node ./publish.js"
   },
   "repository": {
     "type": "git",
