@@ -42,7 +42,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
                 <li>
                     <time class="small"><?= $post['date'] ?></time>
                     <h3>
-                        <a href="<?= BASE_URL.$post['slug'] ?>"><?= htmlentities($post['title']) ?></a>
+                        <a href="<?= $post['slug'] ?>"><?= htmlentities($post['title']) ?></a>
                     </h3>
                     <p><?= $post['excerpt'] ?></p>
                 </li>
