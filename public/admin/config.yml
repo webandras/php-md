@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+# This line should *not* be indented
+publish_mode: editorial_workflow
+
+# These lines should *not* be indented
+media_folder: "public/assets/images/uploads" # Media files will be stored in the repo under public/assets/images/uploads
+public_folder: "/assets/images/uploads" # The src attribute for uploaded media will begin with /assets/images/uploads
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Write a blogpost" # Used in the UI
+    folder: "posts/" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Cover image", name: "cover_image", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown" }
