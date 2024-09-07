@@ -46,7 +46,7 @@ folder.
 Netlify builds website with its buildbot. It starts a Docker container running
 the [Netlify build image](https://hub.docker.com/r/netlify/build/#!)
 
-Netlify install a lot of packages to be able to run the various tools to build a static
+Netlify installs a lot of packages to be able to run the various tools to build a static
 website. And this is done inside a [Docker container](https://docs.docker.com/get-started/).
 
 When the Docker fires up, a script like this runs:*
@@ -122,7 +122,7 @@ read-only OverlayFS layers of the Docker image (files copied on top of each othe
 the Dockerfile). A container is destroyed after the build has been completed (the top writable layer is removed).
 However, the data can be made permanent using volumes (which are kept).
 
-Docker is using the kernel and obviously the shared resources of the host (server), and are meant for process
+Docker is using the kernel and obviously the shared resources of the host (server), and is meant for process
 isolation. Containers are more lightweight, and don't have the overheads Virtual Machines
 do. [More about it](https://www.simplilearn.com/tutorials/docker-tutorial/docker-vs-virtual-machine).
 
