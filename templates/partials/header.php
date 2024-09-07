@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="container container-lg">
         <a href="<?= BASE_URL ?>">
-            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= WEBSITE_NAME ?> logo" style="height: 50px;"/>
+            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= WEBSITE_NAME ?> logo" height="50px" width="95.83px"/>
             <span></span>
         </a>
 
@@ -18,7 +18,7 @@
             </section>
 
             <section class="header--section-2">
-                <button id="theme-toggle" type="button">
+                <button id="theme-toggle" type="button" title="Toggle dark mode">
                     <svg id="theme-toggle-dark-icon" class="hidden"
                          fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +33,7 @@
                 </button>
                 <button
                         id="toggle-menu"
+                        title="Open main menu"
                         data-collapse-toggle="navbar-default"
                         type="button"
                         aria-controls="navbar-default"
@@ -54,7 +55,7 @@
 </header>
 
 <article class="sidenav" id="main-sidenav">
-    <a href="javascript:void(0)" id="close-btn" class="close-btn">&times;</a>
+    <a href="javascript:void(0)" role="button" aria-label="Close side navigation menu" id="close-btn" class="close-btn">&times;</a>
     <section id="mobile-nav"></section>
 </article>
 

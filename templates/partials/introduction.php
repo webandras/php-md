@@ -1,6 +1,6 @@
     <section class="introduction">
-        <a href="<?= GITHUB ?>" role="alert" class="introduction--link-center">
-            Full documentation
+        <a href="<?= GITHUB ?>" class="introduction--link-center">
+            <span>Full documentation</span>
             <svg fill="currentColor" class="icon" viewBox="0 0 20 20"
                  xmlns="http://www.w3.org/2000/svg">
                 <path
