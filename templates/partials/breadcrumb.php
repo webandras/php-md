@@ -23,8 +23,8 @@
                     ></path>
                 </svg>
                 <?php
-                if (isset($data)) { ?>
-                    <span><?= $data['frontmatter']['title'] ?></span>
+                if (isset($frontmatter)) { ?>
+                    <span><?= $frontmatter['title'] ?></span>
                     <?php
                 } else { ?>
                     <span>Page title</span>

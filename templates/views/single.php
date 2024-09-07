@@ -31,23 +31,25 @@
 <body class="single">
 
 <?php
-require dirname(__DIR__).'/partials/header.php'; ?>
+require $root_dir.'/templates/partials/header.php'; ?>
 
 <main class="container">
     <?php
-    require dirname(__DIR__).'/partials/breadcrumb.php'; ?>
+    require $root_dir.'/templates/partials/breadcrumb.php'; ?>
     <article>
         <?php
-        require dirname(__DIR__).'/partials/post-header.php'; ?>
+        require $root_dir.'/templates/partials/post-header.php'; ?>
 
         <?= $content ?>
 
         <footer></footer>
     </article>
+    <br>
+    <br>
 </main>
 
 <?php
-require dirname(__DIR__).'/partials/footer.php'; ?>
+require $root_dir.'/templates/partials/footer.php'; ?>
 
 <script src="<?= BASE_URL.'assets/js/main.js' ?>"></script>
 

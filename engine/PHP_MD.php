@@ -10,7 +10,7 @@ use League\CommonMark\MarkdownConverter;
 /**
  * Class for generating HTML file output from parsed markdown files
  */
-class PHPMD
+class PHP_MD
 {
     /**
      * @var MarkdownConverter
@@ -27,7 +27,7 @@ class PHPMD
     /**
      * @var string
      */
-    private string $rootDir;
+    private string $root_dir;
 
 
     public function __construct()
@@ -45,7 +45,7 @@ class PHPMD
         // Instantiate the converter engine and start converting some Markdown!
         $this->converter = new MarkdownConverter($environment);
 
-        $this->rootDir = dirname(__DIR__);
+        $this->root_dir = dirname(__DIR__);
     }
 
 
@@ -56,7 +56,7 @@ class PHPMD
      *
      * @return string
      */
-    public function getPostContent(RenderedContentWithFrontMatter $result
+    public function get_post_content(RenderedContentWithFrontMatter $result
     ): string {
         return $result->getContent();
     }
@@ -69,7 +69,7 @@ class PHPMD
      *
      * @return array
      */
-    public function getPostFrontMatter(RenderedContentWithFrontMatter $result
+    public function get_post_front_matter(RenderedContentWithFrontMatter $result
     ): array {
         return $result->getFrontMatter();
     }
@@ -83,31 +83,32 @@ class PHPMD
      *
      * @return bool
      */
-    public function saveHtml(
+    public function save_html(
         string $destinationDirectory,
         string $content,
         string $filePath = '',
         string $fileName = 'index'
     ): bool {
-        $filename = ($filePath !== '') ? $this->getFileName($filePath) : $fileName;
-        $destinationFilePath = $destinationDirectory.$filename.'.html';
+        $filename             = ($filePath !== '')
+            ? $this->get_filename($filePath) : $fileName;
+        $destination_filepath = $destinationDirectory.$filename.'.html';
 
-        return file_put_contents($destinationFilePath, $content) !== false;
+        return file_put_contents($destination_filepath, $content) !== false;
     }
 
 
     /**
      * @return array|null
      */
-    public function generatePosts(): array|null
+    public function generate_posts(): array|null
     {
-        $sourceDirectory      = $this->rootDir.'/posts';
-        $destinationDirectory = $this->rootDir.'/public/posts/';
-        $files                = glob($sourceDirectory.'/*.md');
+        $source_directory      = $this->root_dir.'/posts';
+        $destination_directory = $this->root_dir.'/public/posts/';
+        $files                 = glob($source_directory.'/*.md');
 
         // Read all markdown files and convert them to html
-        foreach ($files as $filePath) {
-            $markdown = file_get_contents($filePath);
+        foreach ($files as $filepath) {
+            $markdown = file_get_contents($filepath);
 
             try {
                 $result = $this->converter->convert($markdown);
@@ -117,23 +118,24 @@ class PHPMD
             }
 
             if ($result instanceof RenderedContentWithFrontMatter) {
-                $frontMatter = $this->transformFrontMatter(
-                    $this->getPostFrontMatter($result),
-                    $filePath
+                $frontMatter = $this->transform_front_matter(
+                    $this->get_post_front_matter($result),
+                    $filepath
                 );
 
                 $this->posts[]       = $frontMatter;
                 $data['frontmatter'] = $frontMatter;
-                $data['content']     = $this->getPostContent($result);
-                $pageName            = 'post';
+                $data['content']     = $this->get_post_content($result);
+                $page_name           = 'post';
+                $root_dir              = $this->root_dir;
                 extract($data);
 
                 ob_start();
-                require $this->rootDir.'/templates/views/single.php';
+                require $this->root_dir.'/templates/views/single.php';
                 $content = ob_get_contents();
                 ob_end_clean();
 
-                $this->saveHtml($destinationDirectory, $content, $filePath);
+                $this->save_html($destination_directory, $content, $filepath);
             }
         }
 
@@ -144,35 +146,37 @@ class PHPMD
     /**
      * @return void
      */
-    public function generateIndexPage(): void
+    public function generate_index_page(): void
     {
-        $destinationDirectory = $this->rootDir.'/public/';
-        $posts                = $this->posts;
-        $pageName             = 'index';
+        $destination_directory = $this->root_dir.'/public/';
+        $posts                 = $this->posts;
+        $page_name             = 'index';
+        $root_dir              = $this->root_dir;
 
         ob_start();
-        require $this->rootDir.'/templates/views/index.php';
+        require $this->root_dir.'/templates/views/index.php';
         $content = ob_get_contents();
         ob_end_clean();
 
-        $this->saveHtml($destinationDirectory, $content);
+        $this->save_html($destination_directory, $content);
     }
 
     /**
      * @return void
      */
-    public function generateArchivePage(): void
+    public function generate_archive_page(): void
     {
-        $destinationDirectory = $this->rootDir.'/public/';
-        $posts                = $this->posts;
-        $pageName             = 'archive';
+        $destination_directory = $this->root_dir.'/public/';
+        $posts                 = $this->posts;
+        $page_name             = 'archive';
+        $root_dir              = $this->root_dir;
 
         ob_start();
-        require $this->rootDir.'/templates/views/archive.php';
+        require $this->root_dir.'/templates/views/archive.php';
         $content = ob_get_contents();
         ob_end_clean();
 
-        $this->saveHtml($destinationDirectory, $content, '', $pageName);
+        $this->save_html($destination_directory, $content, '', $page_name);
     }
 
 
@@ -181,7 +185,7 @@ class PHPMD
      *
      * @return string
      */
-    private function getFileName(string $filePath): string
+    private function get_filename(string $filePath): string
     {
         $parts = explode('/', $filePath);
 
@@ -190,25 +194,27 @@ class PHPMD
 
 
     /**
-     * @param  array  $frontMatter
-     * @param  string  $filePath
+     * @param  array  $front_matter
+     * @param  string  $filepath
      *
      * @return array|void
      */
-    private function transformFrontMatter(array $frontMatter, string $filePath)
-    {
-        $frontMatter['slug'] = BASE_URL.'posts/'.$this->getFileName($filePath).'.html';
-        $date                = $frontMatter['date'].':00';
+    private function transform_front_matter(
+        array $front_matter,
+        string $filepath
+    ) {
+        $front_matter['slug'] = BASE_URL.'posts/'.$this->get_filename($filepath).'.html';
+        $date = $front_matter['date'].':00';
 
         try {
-            $dt = new DateTime($date, new DateTimeZone('Europe/Budapest'));
-            $frontMatter['date'] = $dt->format('Y-m-d H:i');
+            $dt = new DateTime($date, new DateTimeZone(DEFAULT_TIMEZONE));
+            $front_matter['date'] = $dt->format(DEFAULT_DATE_FORMAT);
         } catch (Exception $ex) {
             var_dump($ex);
             die;
         }
 
-        return $frontMatter;
+        return $front_matter;
     }
 
 }

@@ -15,7 +15,7 @@
     <title><?= OUR_NAME ?></title>
 
     <?php
-    require dirname(__DIR__).'/partials/meta.php';
+    require $root_dir.'/templates/partials/meta.php';
     ?>
 
     <script type="text/javascript">
@@ -31,12 +31,12 @@
 <body>
 
 <?php
-require dirname(__DIR__).'/partials/header.php'; ?>
+require $root_dir.'/templates/partials/header.php'; ?>
 
 <main class="container">
 
     <?php
-    require dirname(__DIR__).'/partials/introduction.php'; ?>
+    require $root_dir.'/templates/partials/introduction.php'; ?>
 
     <section>
         <h2>Newest writings</h2>
@@ -57,7 +57,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
 </main>
 
 <?php
-require dirname(__DIR__).'/partials/footer.php'; ?>
+require $root_dir.'/templates/partials/footer.php'; ?>
 
 <script src="<?= BASE_URL.'assets/js/main.js' ?>"></script>
 

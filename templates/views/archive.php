@@ -27,7 +27,7 @@
 <body>
 
 <?php
-require dirname(__DIR__).'/partials/header.php'; ?>
+require $root_dir.'/templates/partials/header.php'; ?>
 
 <main class="container">
     <section>
@@ -36,8 +36,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
         <?php
         $year_month_groups = [];
         foreach ($posts as $post) {
-            $post_date           = new \DateTime($post['date'],
-                new \DateTimeZone('Europe/Budapest'));
+            $post_date           = new \DateTime($post['date'], new \DateTimeZone('Europe/Budapest'));
             $year_month_groups[] = $post_date->format('M Y');
         }
         $year_month_groups = array_unique($year_month_groups);
@@ -50,8 +49,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
                     <ul>
                         <?php
                         foreach ($posts as $post) {
-                            $post_date = new \DateTime($post['date'],
-                                new \DateTimeZone('Europe/Budapest'));
+                            $post_date = new \DateTime($post['date'], new \DateTimeZone(DEFAULT_TIMEZONE));
                             if ($post_date->format('M Y') === $year_month) { ?>
                                 <li>
                                     <h3>
@@ -70,7 +68,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
 </main>
 
 <?php
-require dirname(__DIR__).'/partials/footer.php'; ?>
+require $root_dir.'/templates/partials/footer.php'; ?>
 
 <script src="<?= BASE_URL.'assets/js/main.js' ?>"></script>
 

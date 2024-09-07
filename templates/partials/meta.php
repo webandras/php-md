@@ -1,10 +1,16 @@
 <?php
 
-$description = $pageName !== 'post' ? WEBSITE_DESCRIPTION : $frontmatter['excerpt'];
-$title       = $pageName !== 'post' ? WEBSITE_NAME : $frontmatter['title'];
-$url         = $pageName !== 'post' ? (BASE_URL.$pageName.'.html') : $frontmatter['slug'];
-$image       = $pageName !== 'post' ? (BASE_URL.'assets/images/static.jpg') : (BASE_URL.'assets/images/'.$frontmatter['cover_image'])
-
+if ($page_name !== 'post' && !isset($frontmatter)) {
+    $description = WEBSITE_DESCRIPTION;
+    $title       = WEBSITE_NAME;
+    $url         = BASE_URL.$page_name.'.html';
+    $image       = BASE_URL.'assets/images/static.jpg';
+} else {
+    $description = $frontmatter['excerpt'];
+    $title       = $frontmatter['title'];
+    $url         = $frontmatter['slug'];
+    $image       = BASE_URL.'assets/images/'.$frontmatter['cover_image'];
+}
 ?>
 
     <!-- Metas for social media-->
