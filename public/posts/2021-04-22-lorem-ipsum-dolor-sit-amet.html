@@ -21,7 +21,7 @@
     <meta property="og:url" content="http://localhost/phpmd_blog/public/posts/2021-04-22-lorem-ipsum-dolor-sit-amet.html"/>
     <meta property="og:site_name" content="PHP-MD Blog"/>
     <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue nisl, ultricies eu ex quis, bibendum iaculis neque. Integer blandit magna eget tempus ultricies."/>
-    <meta property="og:image" content="http://localhost/phpmd_blog/public/assets/images/elephant-php-mascot.png"/>
+    <meta property="og:image" content="http://localhost/phpmd_blog/public/assets/images/uploads/elephant-php-mascot.png"/>
     <meta property="og:type" content="website"/>
 
     <!-- Twitter -->
@@ -31,7 +31,7 @@
     <meta name="twitter:title" content="Lorem ipsum dolor sit amet"/>
     <meta name="twitter:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue nisl, ultricies eu ex quis, bibendum iaculis neque. Integer blandit magna eget tempus ultricies."/>
     <meta name="twitter:url" content="http://localhost/phpmd_blog/public/posts/2021-04-22-lorem-ipsum-dolor-sit-amet.html"/>
-    <meta name="twitter:image" content="http://localhost/phpmd_blog/public/assets/images/elephant-php-mascot.png"/>
+    <meta name="twitter:image" content="http://localhost/phpmd_blog/public/assets/images/uploads/elephant-php-mascot.png"/>
 
     <link rel="canonical" href="http://localhost/phpmd_blog/public/posts/2021-04-22-lorem-ipsum-dolor-sit-amet.html"/>
 
@@ -50,7 +50,7 @@
 <header class="header">
     <nav class="container container-lg">
         <a href="http://localhost/phpmd_blog/public/">
-            <img src="http://localhost/phpmd_blog/public/assets/images/php-md-logo.png" alt="PHP-MD Blog logo" style="height: 50px;"/>
+            <img src="http://localhost/phpmd_blog/public/assets/images/php-md-logo.png" alt="PHP-MD Blog logo" height="50px" width="95.83px"/>
             <span></span>
         </a>
 
@@ -67,7 +67,7 @@
             </section>
 
             <section class="header--section-2">
-                <button id="theme-toggle" type="button">
+                <button id="theme-toggle" type="button" title="Toggle dark mode">
                     <svg id="theme-toggle-dark-icon" class="hidden"
                          fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +82,7 @@
                 </button>
                 <button
                         id="toggle-menu"
+                        title="Open main menu"
                         data-collapse-toggle="navbar-default"
                         type="button"
                         aria-controls="navbar-default"
@@ -103,7 +104,7 @@
 </header>
 
 <article class="sidenav" id="main-sidenav">
-    <a href="javascript:void(0)" id="close-btn" class="close-btn">&times;</a>
+    <a href="javascript:void(0)" role="button" aria-label="Close side navigation menu" id="close-btn" class="close-btn">&times;</a>
     <section id="mobile-nav"></section>
 </article>
 
@@ -143,7 +144,7 @@
             <header>
         <h1>Lorem ipsum dolor sit amet</h1>
 
-        <img class="cover" src="http://localhost/phpmd_blog/public/assets/images/elephant-php-mascot.png" alt="Lorem ipsum dolor sit amet">
+        <img class="cover" src="http://localhost/phpmd_blog/public/assets/images/uploads/elephant-php-mascot.png" alt="Lorem ipsum dolor sit amet">
         <p class="meta">Posted by: András Gulácsi, at <time>2021-04-22 18:16</time></p>
         <hr>
 
@@ -184,7 +185,7 @@ neque at, faucibus arcu. Quisque ante ex, ornare quis ultricies sit amet, commod
 
 <footer class="footer">
     <a class="footer--logo" href="http://localhost/phpmd_blog/public/">
-      <img src="http://localhost/phpmd_blog/public/assets/images/php-md-logo.png" alt="PHP-MD's Blog" style="height: 50px;" />
+      <img src="http://localhost/phpmd_blog/public/assets/images/php-md-logo.png" alt="PHP-MD's Blog" height="50px" width="95.83px" />
     </a>
 
     <p>A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any shared hosting platforms.</p>

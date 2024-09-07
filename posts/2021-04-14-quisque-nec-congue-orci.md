@@ -3,7 +3,7 @@ author: András Gulácsi
 title: Quisque nec congue orci
 date: 2021-04-14 19:10
 excerpt: Quisque nec congue orci, id facilisis ex. Vestibulum sed sapien risus. Vestibulum tempus neque sed nunc volutpat, non pellentesque metus vehicula. Aliquam et velit a odio elementum varius eget sed massa. Sed id dui laoreet, facilisis nisl id, eleifend elit.
-cover_image: book-compar.jpg
+cover_image: assets/images/uploads/book-compar.jpg
 ---
 
 Quisque nec congue orci, id facilisis ex. Vestibulum sed sapien risus. Vestibulum tempus neque sed nunc volutpat, non

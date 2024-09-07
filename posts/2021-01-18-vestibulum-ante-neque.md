@@ -3,7 +3,7 @@ author: András Gulácsi
 title: Vestibulum ante neque
 date: 2021-01-18 21:25
 excerpt: Vestibulum ante neque, sollicitudin vel ultrices malesuada, euismod eu est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras metus nibh, ullamcorper id est eget, scelerisque volutpat ante.
-cover_image: Foster-Books-London-Bookshop.jpg
+cover_image: assets/images/uploads/Foster-Books-London-Bookshop.jpg
 ---
 
 Vestibulum ante neque, sollicitudin vel ultrices malesuada, euismod eu est. Interdum et malesuada fames ac ante ipsum

@@ -9,7 +9,7 @@ if ($page_name !== 'post' && !isset($frontmatter)) {
     $description = $frontmatter['excerpt'];
     $title       = $frontmatter['title'];
     $url         = $frontmatter['slug'];
-    $image       = BASE_URL.'assets/images/'.$frontmatter['cover_image'];
+    $image       = BASE_URL.$frontmatter['cover_image'];
 }
 ?>
 
