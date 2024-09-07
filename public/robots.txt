@@ -1,2 +1,11 @@
+# Disallow admin page
+User-agent: *
+Disallow: /admin/
+
+# Disallow message-sent page
+User-agent: *
+Disallow: /message-sent/
+
+# Enable all the other links
 User-agent: *
 Allow: /
