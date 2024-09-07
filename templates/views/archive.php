@@ -14,10 +14,6 @@
 
     <title><?= OUR_NAME ?></title>
 
-    <?php
-    require dirname(__DIR__).'/partials/meta.php';
-    ?>
-
     <script type="text/javascript">
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -34,25 +30,42 @@
 require dirname(__DIR__).'/partials/header.php'; ?>
 
 <main class="container">
-
-    <?php
-    require dirname(__DIR__).'/partials/introduction.php'; ?>
-
     <section>
-        <h2>Newest writings</h2>
-        <ol class="post-list">
+        <h1>All writings</h1>
+
+        <?php
+        $year_month_groups = [];
+        foreach ($posts as $post) {
+            $post_date           = new \DateTime($post['date'],
+                new \DateTimeZone('Europe/Budapest'));
+            $year_month_groups[] = $post_date->format('M Y');
+        }
+        $year_month_groups = array_unique($year_month_groups);
+        ?>
+        <ul>
             <?php
-            foreach ($posts as $post) { ?>
-                <li>
-                    <time class="small"><?= $post['date'] ?></time>
-                    <h3>
-                        <a href="<?= $post['slug'] ?>"><?= $post['title'] ?></a>
-                    </h3>
-                    <p><?= $post['excerpt'] ?></p>
+            foreach ($year_month_groups as $year_month) { ?>
+            <li>
+                    <div><?= $year_month ?></div>
+                    <ul>
+                        <?php
+                        foreach ($posts as $post) {
+                            $post_date = new \DateTime($post['date'],
+                                new \DateTimeZone('Europe/Budapest'));
+                            if ($post_date->format('M Y') === $year_month) { ?>
+                                <li>
+                                    <h3>
+                                        <a href="<?= $post['slug'] ?>"><?= $post['title'] ?></a>
+                                    </h3>
+                                </li>
+                                <?php
+                            } ?>
+                            <?php
+                        } ?>
+                    </ul>
                 </li>
-                <?php
-            } ?>
-        </ol>
+            <?php } ?>
+        </ul>
     </section>
 </main>
 

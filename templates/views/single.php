@@ -12,7 +12,11 @@
     <link href="<?= BASE_URL.'assets/css/trongate.css' ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= BASE_URL.'assets/css/main.css' ?>" rel="stylesheet" type="text/css"/>
 
-    <title><?= $data['frontmatter']['title'] ?></title>
+    <title><?= $frontmatter['title'] ?></title>
+
+    <?php
+    require dirname(__DIR__).'/partials/meta.php';
+    ?>
 
     <script type="text/javascript">
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -36,7 +40,7 @@ require dirname(__DIR__).'/partials/header.php'; ?>
         <?php
         require dirname(__DIR__).'/partials/post-header.php'; ?>
 
-        <?= $data['content'] ?>
+        <?= $content ?>
 
         <footer></footer>
     </article>

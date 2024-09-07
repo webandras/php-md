@@ -79,16 +79,17 @@ class PHPMD
      * @param  string  $destinationDirectory
      * @param  string  $content
      * @param  string  $filePath
+     * @param  string  $fileName
      *
      * @return bool
      */
     public function saveHtml(
         string $destinationDirectory,
         string $content,
-        string $filePath = ''
+        string $filePath = '',
+        string $fileName = 'index'
     ): bool {
-        $filename            = ($filePath !== '')
-            ? $this->getFileName($filePath) : 'index';
+        $filename = ($filePath !== '') ? $this->getFileName($filePath) : $fileName;
         $destinationFilePath = $destinationDirectory.$filename.'.html';
 
         return file_put_contents($destinationFilePath, $content) !== false;
@@ -111,9 +112,7 @@ class PHPMD
             try {
                 $result = $this->converter->convert($markdown);
             } catch (CommonMarkException $ex) {
-                if (ENV === 'dev') {
-                    var_dump($ex);
-                }
+                var_dump($ex);
                 die;
             }
 
@@ -126,6 +125,8 @@ class PHPMD
                 $this->posts[]       = $frontMatter;
                 $data['frontmatter'] = $frontMatter;
                 $data['content']     = $this->getPostContent($result);
+                $pageName            = 'post';
+                extract($data);
 
                 ob_start();
                 require $this->rootDir.'/templates/views/single.php';
@@ -147,6 +148,7 @@ class PHPMD
     {
         $destinationDirectory = $this->rootDir.'/public/';
         $posts                = $this->posts;
+        $pageName             = 'index';
 
         ob_start();
         require $this->rootDir.'/templates/views/index.php';
@@ -154,6 +156,23 @@ class PHPMD
         ob_end_clean();
 
         $this->saveHtml($destinationDirectory, $content);
+    }
+
+    /**
+     * @return void
+     */
+    public function generateArchivePage(): void
+    {
+        $destinationDirectory = $this->rootDir.'/public/';
+        $posts                = $this->posts;
+        $pageName             = 'archive';
+
+        ob_start();
+        require $this->rootDir.'/templates/views/archive.php';
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        $this->saveHtml($destinationDirectory, $content, '', $pageName);
     }
 
 
@@ -185,9 +204,7 @@ class PHPMD
             $dt = new DateTime($date, new DateTimeZone('Europe/Budapest'));
             $frontMatter['date'] = $dt->format('Y-m-d H:i');
         } catch (Exception $ex) {
-            if (ENV === 'dev') {
-                var_dump($ex);
-            }
+            var_dump($ex);
             die;
         }
 

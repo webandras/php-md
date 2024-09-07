@@ -8,14 +8,19 @@ Todo: Create the documentation.
 
 ## Basic usage
 
-Generate the posts (from the `/posts` folder) and the blog's index page (see the `\templates\index.php` template):
+Generate the posts (), the index page, and the archive page:
 
 ```php
-php generate.php
+php generate.php --env=dev
 ```
 
-The `\templates\single.php` template is used for the blogposts.
-The `\templates\partials` folder contains specific parts of the website (header, footer, side-menu).
+For production, use a value other that "dev" for the `env` argument.
+
+## Structure
+
+The `\posts` folder contains all the blogposts in markdown files.
+The `\templates\views` contains the templates used for the pages.
+The `\templates\partials` folder contains specific parts of the website (header, footer, introduction, post header, breadcrumb, and meta).
 
 ## License
 

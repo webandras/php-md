@@ -1,8 +1,7 @@
 <header class="header">
     <nav class="container container-lg">
         <a href="<?= BASE_URL ?>">
-            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>"
-                 alt="<?= WEBSITE_NAME ?> logo" style="height: 50px;"/>
+            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= WEBSITE_NAME ?> logo" style="height: 50px;"/>
             <span></span>
         </a>
 
@@ -10,10 +9,10 @@
             <section id="navbar-default">
                 <ul>
                     <li>
-                        <a href="<?= BASE_URL ?>" aria-current="page">Home</a>
+                        <a href="<?= BASE_URL ?>" <?php echo $pageName === 'index' ? 'aria-current="page"' : '' ?>>Home</a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>test.html">Test</a>
+                        <a href="<?= BASE_URL ?>archive.html" <?php echo $pageName === 'archive' ? 'aria-current="page"' : '' ?>>Archive</a>
                     </li>
                 </ul>
             </section>
@@ -50,8 +49,6 @@
                     </svg>
                 </button>
             </section>
-
-
         </section>
     </nav>
 </header>

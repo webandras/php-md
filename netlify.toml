@@ -1,4 +1,4 @@
 [build]
   base    = "/"
   publish = "public"
-  command = "npm run publish"
+  command = "php generate.php --env=prod"

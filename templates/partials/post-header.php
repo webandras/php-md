@@ -1,13 +1,12 @@
 <header>
-    <h1><?= $data['frontmatter']['title'] ?></h1>
+    <h1><?= $frontmatter['title'] ?></h1>
 
-    <img class="cover" src="<?= BASE_URL.'assets/images/'.$data['frontmatter']['cover_image'] ?>"
-         alt="<?= $data['frontmatter']['title'] ?>">
-    <p class="meta">Posted by: <?= $data['frontmatter']['author'] ?>, at <time><?= $data['frontmatter']['date'] ?></time></p>
+    <img class="cover" src="<?= BASE_URL.'assets/images/'.$frontmatter['cover_image'] ?>" alt="<?= $frontmatter['title'] ?>">
+    <p class="meta">Posted by: <?= $frontmatter['author'] ?>, at <time><?= $frontmatter['date'] ?></time></p>
     <hr>
 
     <p>
-        <b><?= $data['frontmatter']['excerpt'] ?></b>
+        <b><?= $frontmatter['excerpt'] ?></b>
     <p>
     <br>
 </header>
