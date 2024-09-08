@@ -1,7 +1,7 @@
 <header class="header">
     <nav class="container container-lg">
-        <a href="<?= BASE_URL ?>">
-            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= WEBSITE_NAME ?> logo" height="50px" width="95.83px"/>
+        <a href="<?= BASE_URL. ($language_code !== DEFAULT_LANGUAGE ? ($language_code.'/') : '') ?>">
+            <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= $website_name ?> logo" height="50px" width="95.83px"/>
             <span></span>
         </a>
 
@@ -9,10 +9,10 @@
             <section id="navbar-default">
                 <ul>
                     <li>
-                        <a href="<?= BASE_URL ?>" <?php echo $page_name === 'index' ? 'aria-current="page"' : '' ?>>Home</a>
+                        <a href="<?= BASE_URL. ($language_code !== DEFAULT_LANGUAGE ? ($language_code.'/') : '') ?>" <?php echo $page_name === 'index' ? 'aria-current="page"' : '' ?>>Home</a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL ?>archive.html" <?php echo $page_name === 'archive' ? 'aria-current="page"' : '' ?>>Archive</a>
+                        <a href="<?= BASE_URL. ($language_code !== DEFAULT_LANGUAGE ? ($language_code.'/') : '') ?>archive" <?php echo $page_name === 'archive' ? 'aria-current="page"' : '' ?>>Archive</a>
                     </li>
                 </ul>
             </section>

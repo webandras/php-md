@@ -1,5 +1,5 @@
     <section class="introduction">
-        <a href="<?= GITHUB ?>" class="introduction--link-center">
+        <a href="<?= $github ?>" class="introduction--link-center">
             <span>Full documentation</span>
             <svg fill="currentColor" class="icon" viewBox="0 0 20 20"
                  xmlns="http://www.w3.org/2000/svg">
@@ -10,8 +10,8 @@
                 ></path>
             </svg>
         </a>
-        <h1><?= OUR_NAME ?></h1>
-        <p><?= WEBSITE_DESCRIPTION ?></p>
+        <h1><?= $our_name ?></h1>
+        <p><?= $website_description ?></p>
         <div class="introduction-cta-row">
             <button id="deploy" role="button">
                 <img style="width: 24px; height: 24px; position: relative; top: 4px;"
@@ -19,7 +19,7 @@
                      alt="Netlify logo"/>
                 <span>Deploy to Netlify</span>
             </button>
-            <a href="<?= GITHUB ?>" class="link">
+            <a href="<?= $github ?>" class="link">
                 <svg style="width: 24px; height: 24px"
                      aria-hidden="true"
                      focusable="false"

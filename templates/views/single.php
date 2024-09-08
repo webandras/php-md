@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?= DEFAULT_LANGUAGE ?>">
+<html lang="<?= $language_code ?>">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,7 +15,7 @@
     <title><?= $frontmatter['title'] ?></title>
 
     <?php
-    require dirname(__DIR__).'/partials/meta.php';
+    require $root_dir.'/templates/partials/meta.php';
     ?>
 
     <script type="text/javascript">

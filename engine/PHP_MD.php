@@ -76,7 +76,7 @@ class PHP_MD
 
 
     /**
-     * @param  string  $destinationDirectory
+     * @param  string  $destination_directory
      * @param  string  $content
      * @param  string  $filePath
      * @param  string  $fileName
@@ -84,26 +84,33 @@ class PHP_MD
      * @return bool
      */
     public function save_html(
-        string $destinationDirectory,
+        string $destination_directory,
         string $content,
         string $filePath = '',
         string $fileName = 'index'
     ): bool {
-        $filename             = ($filePath !== '')
-            ? $this->get_filename($filePath) : $fileName;
-        $destination_filepath = $destinationDirectory.$filename.'.html';
+        $filename             = ($filePath !== '') ? $this->get_filename($filePath) : $fileName;
+        $destination_filepath = $destination_directory.$filename.'.html';
+
+        if (!is_dir($destination_directory)) {
+            mkdir($destination_directory, 0755);
+        }
 
         return file_put_contents($destination_filepath, $content) !== false;
     }
 
 
     /**
+     * @param  string  $language
+     * @param  array  $data
+     *
      * @return array|null
      */
-    public function generate_posts(): array|null
+    public function generate_posts(string $language = DEFAULT_LANGUAGE, array $data = []): array|null
     {
-        $source_directory      = $this->root_dir.'/posts';
-        $destination_directory = $this->root_dir.'/public/posts/';
+        $this->posts           = [];
+        $source_directory      = $this->root_dir.'/posts/'.($language !== DEFAULT_LANGUAGE ? ($language.'/') : '');
+        $destination_directory = $this->root_dir.'/public/posts/'.($language !== DEFAULT_LANGUAGE ? ($language.'/') : '');
         $files                 = glob($source_directory.'/*.md');
 
         // Read all markdown files and convert them to html
@@ -120,14 +127,15 @@ class PHP_MD
             if ($result instanceof RenderedContentWithFrontMatter) {
                 $frontMatter = $this->transform_front_matter(
                     $this->get_post_front_matter($result),
-                    $filepath
+                    $filepath,
+                    $language
                 );
 
                 $this->posts[]       = $frontMatter;
                 $data['frontmatter'] = $frontMatter;
                 $data['content']     = $this->get_post_content($result);
-                $page_name           = 'post';
-                $root_dir              = $this->root_dir;
+                $data['page_name']   = 'post';
+                $data['root_dir']    = $this->root_dir;
                 extract($data);
 
                 ob_start();
@@ -144,14 +152,18 @@ class PHP_MD
 
 
     /**
+     * @param  string  $language
+     * @param  array  $data
+     *
      * @return void
      */
-    public function generate_index_page(): void
+    public function generate_index_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
-        $destination_directory = $this->root_dir.'/public/';
-        $posts                 = $this->posts;
-        $page_name             = 'index';
-        $root_dir              = $this->root_dir;
+        $destination_directory = $this->root_dir.'/public/'.($language !== DEFAULT_LANGUAGE ? ($language.'/') : '');
+        $data['posts']         = $this->posts;
+        $data['page_name']     = 'index';
+        $data['root_dir']      = $this->root_dir;
+        extract($data);
 
         ob_start();
         require $this->root_dir.'/templates/views/index.php';
@@ -162,14 +174,18 @@ class PHP_MD
     }
 
     /**
+     * @param  string  $language
+     * @param  array  $data
+     *
      * @return void
      */
-    public function generate_archive_page(): void
+    public function generate_archive_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
-        $destination_directory = $this->root_dir.'/public/';
-        $posts                 = $this->posts;
-        $page_name             = 'archive';
-        $root_dir              = $this->root_dir;
+        $destination_directory = $this->root_dir.'/public/'.($language !== DEFAULT_LANGUAGE ? ($language.'/') : '');
+        $data['posts']                 = $this->posts;
+        $data['page_name']             = 'archive';
+        $data['root_dir']              = $this->root_dir;
+        extract($data);
 
         ob_start();
         require $this->root_dir.'/templates/views/archive.php';
@@ -196,14 +212,16 @@ class PHP_MD
     /**
      * @param  array  $front_matter
      * @param  string  $filepath
+     * @param  string  $language
      *
      * @return array|void
      */
     private function transform_front_matter(
         array $front_matter,
-        string $filepath
+        string $filepath,
+        string $language
     ) {
-        $front_matter['slug'] = BASE_URL.'posts/'.$this->get_filename($filepath).'.html';
+        $front_matter['slug'] = BASE_URL.'posts/'.($language !== DEFAULT_LANGUAGE ? ($language.'/') : '').$this->get_filename($filepath).'.html';
         $date = $front_matter['date'].':00';
 
         try {

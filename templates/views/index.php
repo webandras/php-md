@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?= DEFAULT_LANGUAGE ?>">
+<html lang="<?= $language_code ?>">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,7 +12,7 @@
     <link href="<?= BASE_URL.'assets/css/trongate.css' ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= BASE_URL.'assets/css/main.css' ?>" rel="stylesheet" type="text/css"/>
 
-    <title><?= OUR_NAME ?></title>
+    <title><?= $our_name ?></title>
 
     <?php
     require $root_dir.'/templates/partials/meta.php';

@@ -1,7 +1,7 @@
 <nav class="breadcrumb" aria-label="breadcrumb">
     <ol>
         <li>
-            <a href="<?= BASE_URL ?>" class="breadcrumb--home-link">
+            <a href="<?= BASE_URL. ($language_code !== DEFAULT_LANGUAGE ? ($language_code.'/') : '') ?>" class="breadcrumb--home-link">
                 <svg fill="currentColor" viewBox="0 0 20 20"
                      xmlns="http://www.w3.org/2000/svg">
                     <path

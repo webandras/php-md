@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?= DEFAULT_LANGUAGE ?>">
+<html lang="<?= $language_code ?>">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,7 +12,7 @@
     <link href="<?= BASE_URL.'assets/css/trongate.css' ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= BASE_URL.'assets/css/main.css' ?>" rel="stylesheet" type="text/css"/>
 
-    <title><?= OUR_NAME ?></title>
+    <title><?= $our_name ?></title>
 
     <script type="text/javascript">
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -44,7 +44,7 @@ require $root_dir.'/templates/partials/header.php'; ?>
         <ul>
             <?php
             foreach ($year_month_groups as $year_month) { ?>
-            <li>
+                <li>
                     <div><?= $year_month ?></div>
                     <ul>
                         <?php
@@ -62,7 +62,8 @@ require $root_dir.'/templates/partials/header.php'; ?>
                         } ?>
                     </ul>
                 </li>
-            <?php } ?>
+            <?php
+            } ?>
         </ul>
     </section>
 </main>
