@@ -61,6 +61,8 @@ class PHP_MD extends PHP_MD_Base
             }
         }
 
+        $this->posts = array_reverse($this->posts, true);
+
         return $this->posts ?? null;
     }
 
