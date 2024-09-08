@@ -39,7 +39,7 @@ require $root_dir.'/templates/partials/header.php'; ?>
     require $root_dir.'/templates/partials/introduction.php'; ?>
 
     <section>
-        <h2>Newest writings</h2>
+        <h2><?= $newest_writings_text ?></h2>
         <ol class="post-list">
             <?php
             foreach ($posts as $post) { ?>

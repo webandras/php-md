@@ -13,6 +13,7 @@ settype($env, 'string');
 require __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/config/config.php';
 require_once __DIR__.'/config/translations.php';
+require_once __DIR__.'/engine/helpers/helpers.php';
 require_once __DIR__.'/engine/PHP_MD.php';
 
 // Instantiate the site generator class

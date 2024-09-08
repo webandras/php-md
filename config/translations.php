@@ -13,6 +13,24 @@ $translations['en-gb'] = [
     'our_email_address'   => 'gandras@passmail.net',
     'default_image'       => '/assets/images/static.jpg',
     'github'              => 'https://github.com/webandras/php-md',
+
+    'breadcrumb_home_text' => 'Blog',
+
+    'github_repo_text'   => 'GitHub Repository',
+    'netlify_text'       => 'Deploy to Netlify',
+    'documentation_text' => 'Full documentation',
+
+    'writings_text'        => 'All writings',
+    'newest_writings_text' => 'Newest writings',
+
+    'home_text'          => 'Home',
+    'archive_text'       => 'Archive',
+    'close_sidenav_text' => 'Close side navigation menu',
+    'open_menu_text'     => 'Open main menu',
+    'dark_mode_text'     => 'Toggle dark mode',
+    'license_text'       => 'MIT license.',
+
+    'posted_by_text' => 'Posted by: %s, at %s',
 ];
 
 $translations['hu-hu'] = [
@@ -27,6 +45,24 @@ $translations['hu-hu'] = [
     'our_email_address'   => 'gandras@passmail.net',
     'default_image'       => '/assets/images/static.jpg',
     'github'              => 'https://github.com/webandras/php-md',
+
+    'breadcrumb_home_text' => 'Blog',
+
+    'github_repo_text'   => 'GitHub Repository',
+    'netlify_text'       => 'Telepítés Netlify-ra',
+    'documentation_text' => 'Teljes dokumentáció',
+
+    'writings_text'        => 'Összes írás',
+    'newest_writings_text' => 'Legújabb írások',
+
+    'home_text'          => 'Kezdőlap',
+    'archive_text'       => 'Archívum',
+    'close_sidenav_text' => 'Oldalsáv-menü bezárása',
+    'open_menu_text'     => 'Főmenü megnyitása',
+    'dark_mode_text'     => 'Sötét téma ki-bekapcsolása',
+    'license_text'       => 'MIT liszensz.',
+
+    'posted_by_text' => 'Posted by: %s, at %s',
 ];
 
 
@@ -42,6 +78,24 @@ $translations['lt-lt'] = [
     'our_email_address'   => 'gandras@passmail.net',
     'default_image'       => '/assets/images/static.jpg',
     'github'              => 'https://github.com/webandras/php-md',
+
+    'breadcrumb_home_text' => 'Dienoraštį',
+
+    'github_repo_text'   => 'GitHub Repository',
+    'netlify_text'       => 'Deploy to Netlify',
+    'documentation_text' => 'Full documentation',
+
+    'writings_text'        => 'Visi raštai',
+    'newest_writings_text' => 'Naujų raštų',
+
+    'home_text'          => 'Home',
+    'archive_text'       => 'Archive',
+    'close_sidenav_text' => 'Close side navigation menu',
+    'open_menu_text'     => 'Open main menu',
+    'dark_mode_text'     => 'Toggle dark mode',
+    'license_text'       => 'MIT license.',
+
+    'posted_by_text' => 'Posted by: %s, at %s',
 ];
 
 

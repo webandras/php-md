@@ -31,7 +31,7 @@ require $root_dir.'/templates/partials/header.php'; ?>
 
 <main class="container">
     <section>
-        <h1>All writings</h1>
+        <h1><?= $writings_text ?></h1>
 
         <?php
         $year_month_groups = [];

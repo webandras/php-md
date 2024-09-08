@@ -1,9 +1,9 @@
 <?php
 
-if ($page_name !== 'post' && !isset($frontmatter)) {
+if ($template_name !== 'single' && !isset($frontmatter)) {
     $description = $website_description;
     $title       = $website_name;
-    $url         = BASE_URL. ($language_code !== DEFAULT_LANGUAGE ? ($language_code.'/') : '') .($page_name !== 'index' ? $page_name : '');
+    $url         = BASE_URL.get_language_segment($language_code).($template_name !== 'index' ? $template_name : '');
     $image       = BASE_URL.'assets/images/static.jpg';
 } else {
     $description = $frontmatter['excerpt'];
