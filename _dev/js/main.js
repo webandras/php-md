@@ -78,6 +78,14 @@ const onLoad = () => {
     // Sidebar open menu
     document.getElementById("toggle-menu").addEventListener('click', openOffcanvasNavigation);
 
+    //
+    document.onclick = function (e) {
+        if (e.target.id !== 'main-sidenav' && e.target.id !== 'close-btn') {
+            if (e.target.offsetParent && e.target.offsetParent.id !== 'main-sidenav')
+                closeOffcanvasNavigation()
+        }
+    }
+
 };
 
 // only execute when DOM is ready
