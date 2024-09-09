@@ -27,6 +27,7 @@ foreach(LANGUAGES as $language_code => $language_name) {
     // Generate the pages
     $phpmd->generate_index_page($language_code, $translations[$language_code]);
     $phpmd->generate_archive_page($language_code, $translations[$language_code]);
+    $phpmd->generate_404_page($language_code, $translations[$language_code]);
 }
 
 $time_end = microtime(true);

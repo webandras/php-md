@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/PHP_MD_Base.php';
-require_once __DIR__.'/PHP_MD_Trait.php';
+require_once dirname(__DIR__).'/extension/PHP_MD_Trait.php';
 
 use League\CommonMark\Exception\CommonMarkException;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
@@ -100,6 +100,23 @@ class PHP_MD extends PHP_MD_Base
         $content = $this->render_view_and_return($data);
 
         $this->save_html($destination_directory, $content, '', $data['template_name']);
+    }
+
+
+    /**
+     * @param  string  $language
+     * @param  array  $data
+     *
+     * @return void
+     */
+    public function generate_404_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
+    {
+        $destination_directory = $this->root_dir.'/public/'.$this->get_language_segment($language);
+        $data['template_name'] = '404';
+
+        $content = $this->render_view_and_return($data);
+
+        $this->save_html($destination_directory, $content, '', '404');
     }
 
 }

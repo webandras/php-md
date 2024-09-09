@@ -31,6 +31,10 @@ $translations['en-gb'] = [
     'license_text'       => 'MIT license.',
 
     'posted_by_text' => 'Posted by: %s, at %s',
+
+    'page_not_found_title_text'       => 'Page not found',
+    'page_not_found_description_text' => 'Unfortunately, we can\'t find the page you are looking for.',
+    'page_not_found_link_text'        => 'Back to main page'
 ];
 
 $translations['hu-hu'] = [
@@ -63,6 +67,10 @@ $translations['hu-hu'] = [
     'license_text'       => 'MIT liszensz.',
 
     'posted_by_text' => 'Posted by: %s, at %s',
+
+    'page_not_found_title_text'       => 'Oldal nem található',
+    'page_not_found_description_text' => 'Sajnos nem találjuk ezt az oldalt.',
+    'page_not_found_link_text'        => 'Vissza a főoldalra'
 ];
 
 
@@ -96,6 +104,10 @@ $translations['lt-lt'] = [
     'license_text'       => 'MIT license.',
 
     'posted_by_text' => 'Posted by: %s, at %s',
+
+    'page_not_found_title_text'       => 'Kažko trūksta.',
+    'page_not_found_description_text' => 'Atsiprašome, mes negalime rasti šio puslapio.',
+    'page_not_found_link_text'        => 'Atgal į pagrindinį puslapį'
 ];
 
 
