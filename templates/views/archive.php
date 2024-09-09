@@ -31,7 +31,7 @@ require $root_dir.'/templates/partials/header.php'; ?>
 
 <main class="container">
     <section>
-        <h1><?= $writings_text ?></h1>
+        <h1 style="margin-bottom: 2rem;"><?= $writings_text ?></h1>
 
         <?php
         $year_month_groups = [];
@@ -41,7 +41,7 @@ require $root_dir.'/templates/partials/header.php'; ?>
         }
         $year_month_groups = array_unique($year_month_groups);
         ?>
-        <ul>
+        <ul class="blog--archive">
             <?php
             foreach ($year_month_groups as $year_month) { ?>
                 <li>

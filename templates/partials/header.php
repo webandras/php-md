@@ -18,7 +18,7 @@
             </section>
 
             <section class="header--section-2">
-                <button id="theme-toggle" type="button" title="<?= $dark_mode_text ?>">
+                <button id="theme-toggle" class="alt" type="button" title="<?= $dark_mode_text ?>">
                     <svg id="theme-toggle-dark-icon" class="hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
@@ -27,7 +27,7 @@
                               fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <button id="toggle-menu" title="<?= $open_menu_text ?>" data-collapse-toggle="navbar-default" type="button"
+                <button id="toggle-menu" class="alt" title="<?= $open_menu_text ?>" data-collapse-toggle="navbar-default" type="button"
                         aria-controls="navbar-default" aria-expanded="false"
                 >
                     <span class="sr-only"><?= $open_menu_text ?></span>

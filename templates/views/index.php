@@ -53,6 +53,9 @@ require $root_dir.'/templates/partials/header.php'; ?>
                 <?php
             } ?>
         </ol>
+        <p>
+            <a href="<?= BASE_URL ?>archive"><?= $archive_text ?> &raquo;</a>
+        </p>
     </section>
 </main>
 
