@@ -4,9 +4,15 @@
 
 A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any shared hosting platforms.
 
+_Under development, it is not yet production-ready. No versions numbers yet either._
+
+
 - Todo: Improve the documentation.
 - Todo: Add search functionality (or at least enable the usage of Algolia)
-- Todo: Add multi-language support to the site generator
+- Todo: Add a language switcher component
+- Todo: Configuration is a bit messy now, need to improve it.
+- Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to rebuild all files)
+~~- Todo: Add multi-language support to the site generator~~ DONE.
 
 ## Build your website
 
@@ -24,6 +30,12 @@ The `\posts` folder contains all the blogposts in markdown files.
 The `\templates\views` contains the templates used for the pages.
 The `\templates\partials` folder contains specific parts of the website (header, footer, introduction, post header,
 breadcrumb, and meta).
+
+## Engine folder
+
+The site generator main class (`PHP_MD`) is extendable via the `PHP_MD_Trait` trait (see the **extension** folder).
+Add the methods there to generate additional pages (like "contact us", or "about us" pages).
+The **extension** folder won't be touched in any future releases.
 
 ## Publishing a website to Netlify
 
