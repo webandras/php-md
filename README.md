@@ -12,6 +12,7 @@ _Under development, it is not yet production-ready. No versions numbers yet eith
 - Todo: Add a language switcher component
 - Todo: Configuration is a bit messy now, need to improve it.
 - Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to rebuild all files)
+
 ~~- Todo: Add multi-language support to the site generator~~ DONE.
 
 ## Build your website
@@ -26,9 +27,9 @@ For production, use a value other that "dev" for the `env` argument.
 
 ## Data / Template structure
 
-The `\posts` folder contains all the blogposts in markdown files.
-The `\templates\views` contains the templates used for the pages.
-The `\templates\partials` folder contains specific parts of the website (header, footer, introduction, post header,
+- The `\posts` folder contains all the blogposts in markdown files.
+- The `\templates\views` contains the templates used for the pages.
+- The `\templates\partials` folder contains specific parts of the website (header, footer, introduction, post header,
 breadcrumb, and meta).
 
 ## Engine folder
