@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<?= $language_code ?>">
+<html lang="<?= $current_language_code ?>">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

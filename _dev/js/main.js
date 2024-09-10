@@ -82,8 +82,31 @@ const onLoad = () => {
     document.onclick = function (e) {
         if (e.target.id !== 'main-sidenav' && e.target.id !== 'close-btn') {
             if (e.target.offsetParent && e.target.offsetParent.id !== 'main-sidenav')
-                closeOffcanvasNavigation()
+                closeOffcanvasNavigation();
         }
+
+      if (e.target.id !== 'language-switcher-dropdown' &&
+          e.target.id !== 'language-switcher-trigger-button' &&
+          e.target.id !== 'language-switcher-current-language'
+      ) {
+            if (e.target.offsetParent && e.target.offsetParent.id !== 'language-switcher-dropdown')
+                toggleLanguageDropdown('hide');
+      }
+    }
+
+    // Sidebar open menu
+    document.getElementById("language-switcher-trigger-button").addEventListener('click', function() {
+        toggleLanguageDropdown('show')
+    });
+    document.getElementById("language-switcher-current-language").addEventListener('click', function() {
+        toggleLanguageDropdown('show')
+    });
+
+
+    function toggleLanguageDropdown(state) {
+        const langDropdown = document.querySelector('.language-switcher-dropdown');
+        console.log(state, langDropdown);
+        langDropdown.style.display = (state === 'hide') ? 'none' : 'flex'
     }
 
 };

@@ -1,6 +1,6 @@
 <header class="header">
     <nav class="container container-lg">
-        <a href="<?= BASE_URL.get_language_segment($language_code) ?>">
+        <a href="<?= BASE_URL.get_language_segment($current_language_code) ?>">
             <img src="<?= BASE_URL.'assets/images/php-md-logo.png' ?>" alt="<?= out($website_name) ?> logo" height="50px" width="95.83px"/>
             <span></span>
         </a>
@@ -9,10 +9,10 @@
             <section id="navbar-default">
                 <ul>
                     <li>
-                        <a href="<?= BASE_URL.get_language_segment($language_code) ?>" <?php echo set_active_page_link($template_name) ?>><?= $home_text ?></a>
+                        <a href="<?= BASE_URL.get_language_segment($current_language_code) ?>" <?php echo set_active_page_link($template_name) ?>><?= $home_text ?></a>
                     </li>
                     <li>
-                        <a href="<?= BASE_URL.get_language_segment($language_code) ?>archive" <?php echo set_active_page_link($template_name, 'archive') ?>><?= $archive_text ?></a>
+                        <a href="<?= BASE_URL.get_language_segment($current_language_code) ?>archive" <?php echo set_active_page_link($template_name, 'archive') ?>><?= $archive_text ?></a>
                     </li>
                 </ul>
             </section>
@@ -38,6 +38,30 @@
                         ></path>
                     </svg>
                 </button>
+
+                <?php if (sizeof(LANGUAGES) > 1) { ?>
+                <div class="language-switcher">
+                    <button id="language-switcher-trigger-button" class="alt">
+                        <img id="language-switcher-current-language" src="<?= BASE_URL . 'assets/images/flags/' . $current_language_code . '.png' ?>" alt="<?= LANGUAGES[$current_language_code] ?>" title="<?= LANGUAGES[$current_language_code] ?>">
+                    </button>
+
+                    <nav id="language-switcher-dropdown" class="language-switcher-dropdown">
+                        <ul>
+                            <?php foreach (LANGUAGES as $lang_code => $lang_name) {
+                                if ($lang_code !== $current_language_code) {
+                                    ?>
+                                    <li>
+                                        <a href="<?= BASE_URL . ($lang_code !== DEFAULT_LANGUAGE ? $lang_code : '') ?>">
+                                            <img src="<?= BASE_URL . 'assets/images/flags/' . $lang_code . '.png' ?>" alt="<?= $lang_name ?>" title="<?= $lang_name ?>">
+                                        </a>
+                                    </li>
+                                <?php }
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
+                <?php } ?>
             </section>
         </section>
     </nav>
