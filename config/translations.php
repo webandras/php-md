@@ -3,8 +3,6 @@
 // Translation strings
 $translations['en-gb'] = [
     // Required elements
-    'current_language_name'           => 'English',
-    'current_language_code'           => 'en-gb',
     'website_name'                    => 'PHP-MD Blog',
     'website_description'             => 'A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any shared hosting platforms.',
     'our_name'                        => 'PHP-MD\'s Blog',
@@ -38,8 +36,6 @@ $translations['en-gb'] = [
 
 $translations['hu-hu'] = [
     // Required elements
-    'current_language_name'           => 'Magyar',
-    'current_language_code'           => 'hu-hu',
     'website_name'                    => 'PHP-MD Blog',
     'website_description'             => 'Egy PHP alapú statikus oldalgenerátor, ami tiszta PHP-t és Markdown-t használ. Telepítsd a weboldaladat bármilyen osztott tárhelyre.',
     'our_name'                        => 'PHP-MD Blogja',
@@ -74,8 +70,6 @@ $translations['hu-hu'] = [
 
 $translations['lt-lt'] = [
     // Required elements
-    'current_language'                => 'Lietuvių',
-    'current_language_code'           => 'lt-lt',
     'website_name'                    => 'PHP-MD Dienoraštį',
     'website_description'             => 'PHP pagrindu sukurtas statinis svetainių generatorius, kuris naudoja gryną PHP ir Markdown. Įdiekite savo svetainę į bet kurią bendrojo prieglobos platformą.',
     'default_image'                   => '/assets/images/static.jpg',

@@ -8,7 +8,7 @@ if ($env === 'dev') {
 }
 
 define('DEFAULT_DATE_FORMAT', 'Y-m-d H:i');
-define('DEFAULT_TIMEZONE', 'Europe/Budapest');
+define('DEFAULT_TIMEZONE', 'Europe/London');
 define('DEFAULT_LANGUAGE', 'en-gb');
 define('LANGUAGES', array(
     'en-gb' => 'English',

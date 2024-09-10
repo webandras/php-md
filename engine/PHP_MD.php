@@ -47,7 +47,9 @@ class PHP_MD extends PHP_MD_Base
                 $frontMatter = $this->transform_front_matter(
                     $this->get_post_front_matter($result),
                     $filepath,
-                    $language
+                    $language,
+                    $data['timezone'],
+                    $data['date_format']
                 );
 
                 $this->posts[]       = $frontMatter;

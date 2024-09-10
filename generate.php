@@ -12,6 +12,7 @@ settype($env, 'string');
 // Require all files here
 require __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/config/config.php';
+require_once __DIR__.'/config/localizations.php';
 require_once __DIR__.'/config/translations.php';
 require_once __DIR__.'/engine/helpers/helpers.php';
 require_once __DIR__.'/engine/PHP_MD.php';
@@ -21,13 +22,18 @@ $phpmd = new PHP_MD();
 
 foreach(LANGUAGES as $current_language_code => $current_language_name) {
     $posts = [];
+    $data = [];
+
+    // Merge translation and localization settings
+    $data = array_merge($translations[$current_language_code], $localizations[$current_language_code]);
+
     // Generate the posts, get posts list for the pages
-    $posts = $phpmd->generate_posts($current_language_code, $translations[$current_language_code]);
+    $posts = $phpmd->generate_posts($current_language_code, $data);
 
     // Generate the pages
-    $phpmd->generate_index_page($current_language_code, $translations[$current_language_code]);
-    $phpmd->generate_archive_page($current_language_code, $translations[$current_language_code]);
-    $phpmd->generate_404_page($current_language_code, $translations[$current_language_code]);
+    $phpmd->generate_index_page($current_language_code, $data);
+    $phpmd->generate_archive_page($current_language_code, $data);
+    $phpmd->generate_404_page($current_language_code, $data);
 }
 
 $time_end = microtime(true);

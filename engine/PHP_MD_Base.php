@@ -74,20 +74,26 @@ class PHP_MD_Base
      * @param  array  $front_matter
      * @param  string  $filepath
      * @param  string  $language
+     * @param  string  $timezone
+     * @param  string  $date_format
      *
      * @return array|void
      */
     protected function transform_front_matter(
         array $front_matter,
         string $filepath,
-        string $language
+        string $language,
+        string $timezone = DEFAULT_TIMEZONE,
+        string $date_format = DEFAULT_DATE_FORMAT
     ) {
         $front_matter['slug'] = BASE_URL.'posts/'. $this->get_language_segment($language) . $this->get_filename($filepath).'.html';
         $date = $front_matter['date'].':00';
 
         try {
-            $dt = new DateTime($date, new DateTimeZone(DEFAULT_TIMEZONE));
-            $front_matter['date'] = $dt->format(DEFAULT_DATE_FORMAT);
+            $dt = new DateTime($date, new \DateTimeZone(DEFAULT_TIMEZONE));
+            $local_dt = $dt->setTimezone(new DateTimeZone($timezone));
+
+            $front_matter['date'] = $local_dt->format($date_format);
         } catch (Exception $ex) {
             var_dump($ex);
             die;
