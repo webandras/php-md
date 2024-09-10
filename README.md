@@ -2,18 +2,20 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/95c7fae2-38c4-4aca-a24f-f5b77a327ecf/deploy-status)](https://app.netlify.com/sites/phpmd/deploys)
 
-A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any shared hosting platforms.
+A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any hosting platforms.
 
-_Under development, it is not yet production-ready. No versions numbers yet either._
+_Version: 1.0.0_
 
 
-- Todo: Improve the documentation.
 - Todo: Add search functionality (or at least enable the usage of Algolia)
-- Todo: Add a language switcher component
-- Todo: Configuration is a bit messy now, need to improve it.
-- Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to rebuild all files)
+- Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to
+  rebuild all files)
 
-~~- Todo: Add multi-language support to the site generator~~ DONE.
+
+~~- Todo: Improve the documentation.~~
+~~- Todo: Add a language switcher component~~
+~~- Todo: Configuration is a bit messy now, need to improve it.~~
+~~- Todo: Add multi-language support to the site generator~~
 
 ## Build your website
 
@@ -25,12 +27,18 @@ php generate.php --env=dev
 
 For production, use a value other that "dev" for the `env` argument.
 
+## Config
+
+The global settings are defined in `config\config.php`.
+The localization settings are in `config\localizations.php` for each languages.
+The translation strings in an associative arrays are set in `config\translations.php` for each languages.
+
 ## Data / Template structure
 
 - The `\posts` folder contains all the blogposts in markdown files.
 - The `\templates\views` contains the templates used for the pages.
 - The `\templates\partials` folder contains specific parts of the website (header, footer, introduction, post header,
-breadcrumb, and meta).
+  breadcrumb, and meta).
 
 ## Engine folder
 
@@ -81,7 +89,7 @@ cleanup, post-processing).
 For example at the post-processing stage, it is processing the header rules (defined in the `_headers` file) and
 redirection rules (defined in `_redirects` file).
 
-## Configuration
+## Website configuration
 
 In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the
 Netlify server. You can also specify these in `netlify.toml`.
@@ -127,8 +135,28 @@ CSP whitelist added for:
 - Google Fonts,
 - jsDelivr
 
+## Build CSS and JavaScript bundles
 
-## Supplementary information about Docker
+All styles (in SASS) and scripts are located in the `_dev` folder.
+The `custom.sass` is for extensibility (future releases will only affect the files in the **parts** folder).
+
+Generate bundles:
+
+```
+npm run webpack
+```
+
+Generate bundles with watching the file changes:
+
+```
+npm run webpack-watch
+```
+
+## Supplementary information about Docker (if someone might need it)
+
+Docker is popular virtualization software that helps its users in developing, deploying, monitoring, and running
+applications in a Docker Container with all their dependencies. Docker containers include all dependencies (frameworks,
+libraries, etc.) to run an application.
 
 A Docker container is basically a writable **OverlayFS** layer created on the very top of the numerous
 read-only OverlayFS layers of the Docker image (files copied on top of each other: each layer represents a command in
@@ -149,7 +177,7 @@ that [images can built from scratch as well](https://codeburst.io/docker-from-sc
 reserved image that is empty, and thus does nothing). The base images are built this way (_"FROM scratch"_).
 
 Lots of images are **pre-built** for us (like the `netlify/build` image) and stored in the **Docker registry** (not
-DockerHub, since that is just a user interface). There is no need to build them from Dockerfile, just to download them
+DockerHub, since that is just the user interface). There is no need to build them from Dockerfile, just to download them
 from the registry.
 
 ## License
