@@ -4,7 +4,7 @@
 
 A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any hosting platforms.
 
-_Version: 1.0.0_
+_Current version: 1.1.0_
 
 
 - Todo: Add search functionality (or at least enable the usage of Algolia)
