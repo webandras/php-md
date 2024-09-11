@@ -79,33 +79,41 @@ const onLoad = () => {
     document.getElementById("toggle-menu").addEventListener('click', openOffcanvasNavigation);
 
     //
+    const languageSwitcherTriggerBtn = document.getElementById("language-switcher-trigger-button");
+    const languageSwitcherCurrentLanguage = document.getElementById("language-switcher-current-language");
+
     document.onclick = function (e) {
-        if (e.target.id !== 'main-sidenav' && e.target.id !== 'close-btn') {
+        if (e.target.id !== 'main-sidenav' &&
+            e.target.id !== 'close-btn' &&
+            e.target.id !== 'toggle-menu' &&
+            e.target.id !== 'toggle-menu-hamburger-icon'
+        ) {
             if (e.target.offsetParent && e.target.offsetParent.id !== 'main-sidenav')
                 closeOffcanvasNavigation();
         }
 
-      if (e.target.id !== 'language-switcher-dropdown' &&
-          e.target.id !== 'language-switcher-trigger-button' &&
-          e.target.id !== 'language-switcher-current-language'
-      ) {
+
+        if (languageSwitcherTriggerBtn !== null && e.target.id !== 'language-switcher-dropdown' &&
+            e.target.id !== 'language-switcher-trigger-button' &&
+            e.target.id !== 'language-switcher-current-language'
+        ) {
             if (e.target.offsetParent && e.target.offsetParent.id !== 'language-switcher-dropdown')
                 toggleLanguageDropdown('hide');
-      }
+        }
     }
 
-    // Sidebar open menu
-    document.getElementById("language-switcher-trigger-button").addEventListener('click', function() {
-        toggleLanguageDropdown('show')
-    });
-    document.getElementById("language-switcher-current-language").addEventListener('click', function() {
-        toggleLanguageDropdown('show')
-    });
-
+    if (languageSwitcherTriggerBtn) {
+        // Sidebar open menu
+        languageSwitcherTriggerBtn.addEventListener('click', function () {
+            toggleLanguageDropdown('show')
+        });
+        languageSwitcherCurrentLanguage.addEventListener('click', function () {
+            toggleLanguageDropdown('show')
+        });
+    }
 
     function toggleLanguageDropdown(state) {
         const langDropdown = document.querySelector('.language-switcher-dropdown');
-        console.log(state, langDropdown);
         langDropdown.style.display = (state === 'hide') ? 'none' : 'flex'
     }
 

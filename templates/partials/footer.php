@@ -9,5 +9,5 @@
         <li><a href="<?= BASE_URL.get_language_segment($current_language_code) ?>archive" <?php echo set_active_page_link($template_name, 'archive') ?>><?= $archive_text ?></a>
         </li>
     </ul>
-    <aside class="footer--copyright">© <?= date('Y') ?> - <a href="<?= $github ?>" class="hover:underline"><?= $author ?></a>. <?= $license_text ?></aside>
+    <aside class="footer--copyright">© <?= date('Y') ?> - <a href="<?= $github ?>" class="hover:underline"><?= $author ?></a> - <?= $license_text ?></aside>
 </footer>

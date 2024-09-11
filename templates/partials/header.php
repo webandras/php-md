@@ -31,7 +31,7 @@
                         aria-controls="navbar-default" aria-expanded="false"
                 >
                     <span class="sr-only"><?= $open_menu_text ?></span>
-                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="toggle-menu-hamburger-icon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
                               clip-rule="evenodd"
@@ -41,7 +41,7 @@
 
                 <?php if (sizeof(LANGUAGES) > 1) { ?>
                 <div class="language-switcher">
-                    <button id="language-switcher-trigger-button" class="alt">
+                    <button id="language-switcher-trigger-button" class="alt" type="button">
                         <img id="language-switcher-current-language" src="<?= BASE_URL . 'assets/images/flags/' . $current_language_code . '.png' ?>" alt="<?= LANGUAGES[$current_language_code] ?>" title="<?= LANGUAGES[$current_language_code] ?>">
                     </button>
 
