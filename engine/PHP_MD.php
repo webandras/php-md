@@ -23,14 +23,15 @@ class PHP_MD extends PHP_MD_Base
      * @param  string  $language
      * @param  array  $data
      *
-     * @return array|null
+     * @return array
      */
-    public function generate_posts(string $language = DEFAULT_LANGUAGE, array $data = []): array|null
+    public function generate_posts(string $language = DEFAULT_LANGUAGE, array $data = []): array
     {
         $this->posts           = [];
         $source_directory      = $this->root_dir.'/posts/'.$this->get_language_segment($language);
         $destination_directory = $this->root_dir.'/public/posts/'.$this->get_language_segment($language);
         $files                 = glob($source_directory.'/*.md');
+        $lc_time               = $this->get_lc_time($language);
 
         // Read all markdown files and convert them to html
         foreach ($files as $filepath) {
@@ -49,7 +50,7 @@ class PHP_MD extends PHP_MD_Base
                     $filepath,
                     $language,
                     $data['timezone'],
-                    $data['date_format']
+                    $lc_time
                 );
 
                 $this->posts[]       = $frontMatter;
@@ -65,7 +66,7 @@ class PHP_MD extends PHP_MD_Base
 
         $this->posts = array_reverse($this->posts, true);
 
-        return $this->posts ?? null;
+        return $this->posts;
     }
 
 
@@ -96,8 +97,24 @@ class PHP_MD extends PHP_MD_Base
     public function generate_archive_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
         $destination_directory = $this->root_dir.'/public/'.$this->get_language_segment($language);
-        $data['posts']                 = $this->posts;
-        $data['template_name']         = 'archive';
+        $data['posts']          = $this->posts;
+        $data['template_name']  = 'archive';
+        $data['lc_time']        = $this->get_lc_time($language);
+
+        try {
+            /* Create post list grouped by month/year */
+            $year_month_groups = [];
+            foreach ($this->posts as $post) {
+                $post_date  = new \DateTime($post['date_original'], new \DateTimeZone($data['timezone']));
+                $formatter     = $this->get_local_datetime_formatter($data['lc_time'], $data['timezone'], $data['pattern']);
+
+                $year_month_groups[$post_date->format('M Y')] = $formatter->format($post_date);
+            }
+            $data['year_month_groups'] = array_unique($year_month_groups);
+        } catch (Exception $ex) {
+            var_dump($ex);
+            die;
+        }
 
         $content = $this->render_view_and_return($data);
 

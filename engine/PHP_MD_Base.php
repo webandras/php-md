@@ -71,11 +71,13 @@ class PHP_MD_Base
 
 
     /**
+     * Transforms/formats frontmatter properties of the blogpost
+     *
      * @param  array  $front_matter
      * @param  string  $filepath
      * @param  string  $language
      * @param  string  $timezone
-     * @param  string  $date_format
+     * @param  string  $lc_time
      *
      * @return array|void
      */
@@ -84,16 +86,18 @@ class PHP_MD_Base
         string $filepath,
         string $language,
         string $timezone = DEFAULT_TIMEZONE,
-        string $date_format = DEFAULT_DATE_FORMAT
+        string $lc_time = 'en_GB'
     ) {
         $front_matter['slug'] = BASE_URL.'posts/'. $this->get_language_segment($language) . $this->get_filename($filepath).'.html';
-        $date = $front_matter['date'].':00';
+        $datetime = $front_matter['date'].':00';
 
         try {
-            $dt = new DateTime($date, new \DateTimeZone(DEFAULT_TIMEZONE));
-            $local_dt = $dt->setTimezone(new DateTimeZone($timezone));
+            $dt = date_create($datetime);
+            $formatter = $this->get_local_datetime_formatter($lc_time, $timezone);
+            $local_dt = $formatter->format($dt);
 
-            $front_matter['date'] = $local_dt->format($date_format);
+            $front_matter['date'] = $local_dt;
+            $front_matter['date_original'] = $datetime;
         } catch (Exception $ex) {
             var_dump($ex);
             die;
@@ -104,6 +108,8 @@ class PHP_MD_Base
 
 
     /**
+     * Get language folder name for generating urls
+     *
      * @param  string  $language
      *
      * @return string
@@ -111,6 +117,45 @@ class PHP_MD_Base
     protected function get_language_segment(string $language): string
     {
         return $language !== DEFAULT_LANGUAGE ? ($language.'/') : '';
+    }
+
+
+    /**
+     * Returns datetime in locale format and timezone
+     *
+     * @param  string  $lc_time  (format: "en_GB", "hu_HU", "lt_LT" etc.)
+     * @param  string  $timezone
+     * @param  string|null  $pattern
+     *
+     * @return IntlDateFormatter|null
+     */
+    protected function get_local_datetime_formatter(string $lc_time, string $timezone, string $pattern = null): ?IntlDateFormatter
+    {
+        $format = new IntlDateFormatter(
+            $lc_time,
+            IntlDateFormatter::LONG,
+            IntlDateFormatter::SHORT,
+            $timezone,
+            IntlDateFormatter::GREGORIAN,
+            $pattern
+        );
+
+        return $format;
+    }
+
+
+    /**
+     * Get language code in a format like this: 'en_GB'
+     *
+     * @param  string  $language_code
+     *
+     * @return string
+     */
+    protected function get_lc_time(string $language_code = 'en-gb'): string {
+        $lc_time = explode('-', $language_code);
+        $lc_time = implode('_', [$lc_time[0], strtoupper($lc_time[1])]);
+
+        return $lc_time;
     }
 
 

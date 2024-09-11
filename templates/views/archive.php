@@ -33,23 +33,17 @@ require $root_dir.'/templates/partials/header.php'; ?>
     <section>
         <h1 style="margin-bottom: 2rem;"><?= $writings_text ?></h1>
 
-        <?php
-        $year_month_groups = [];
-        foreach ($posts as $post) {
-            $post_date           = new \DateTime($post['date'], new \DateTimeZone('Europe/Budapest'));
-            $year_month_groups[] = $post_date->format('M Y');
-        }
-        $year_month_groups = array_unique($year_month_groups);
-        ?>
         <ul class="blog--archive">
             <?php
-            foreach ($year_month_groups as $year_month) { ?>
+            foreach ($year_month_groups as $year_month => $localized_year_month) { ?>
                 <li>
-                    <div><?= $year_month ?></div>
+                    <?php
+                    ?>
+                    <div><?= $localized_year_month ?></div>
                     <ul>
                         <?php
                         foreach ($posts as $post) {
-                            $post_date = new \DateTime($post['date'], new \DateTimeZone(DEFAULT_TIMEZONE));
+                            $post_date = new \DateTime($post['date_original'], new \DateTimeZone($timezone));
                             if ($post_date->format('M Y') === $year_month) { ?>
                                 <li>
                                     <h3>

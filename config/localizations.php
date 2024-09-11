@@ -7,6 +7,7 @@ $localizations['en-gb'] = [
     'current_language_code' => 'en-gb',
     'date_format'           => DEFAULT_DATE_FORMAT,
     'timezone'              => DEFAULT_TIMEZONE,
+    'pattern'               => 'MMMM Y',
     // Required elements END
 ];
 
@@ -16,6 +17,7 @@ $localizations['hu-hu'] = [
     'current_language_code' => 'hu-hu',
     'date_format'           => DEFAULT_DATE_FORMAT,
     'timezone'              => 'Europe/Budapest',
+    'pattern'               => 'Y. MMMM',
     // Required elements END
 ];
 
@@ -26,6 +28,7 @@ $localizations['lt-lt'] = [
     'current_language_code' => 'lt-lt',
     'date_format'           => DEFAULT_DATE_FORMAT,
     'timezone'              => 'Europe/Vilnius',
+    'pattern'               => 'Y MMMM',
     // Required elements END
 ];
 
