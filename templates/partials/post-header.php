@@ -5,5 +5,5 @@
         <p class="meta"><?= sprintf($posted_by_text, $frontmatter['author'], '<time>'.$frontmatter['date'].'</time>') ?></p>
         <hr>
 
-        <p><b><?= $frontmatter['excerpt'] ?></b><p>
+        <p><b><?= $frontmatter['excerpt'] ?></b></p>
     </header>
