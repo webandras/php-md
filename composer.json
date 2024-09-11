@@ -11,6 +11,7 @@
     ],
     "require": {
         "league/commonmark": "2.5",
-        "symfony/yaml": "^7.1"
+        "symfony/yaml": "^7.1",
+        "ext-intl": "*"
     }
 }
