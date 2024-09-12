@@ -6,16 +6,10 @@ A PHP-based static site generator that uses pure PHP and Markdown. Deploy your w
 
 _Current version: 1.1.0_
 
-
-- Todo: Add search functionality (or at least enable the usage of Algolia)
+- Todo: Add search functionality
 - Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to
   rebuild all files)
 
-
-~~- Todo: Improve the documentation.~~
-~~- Todo: Add a language switcher component~~
-~~- Todo: Configuration is a bit messy now, need to improve it.~~
-~~- Todo: Add multi-language support to the site generator~~
 
 ## Build your website
 
