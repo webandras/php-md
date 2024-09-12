@@ -79,7 +79,7 @@ class PHP_MD extends PHP_MD_Base
     public function generate_index_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
         $destination_directory  = $this->root_dir.'/public/'.$this->get_language_segment($language);
-        $data['posts']          = $this->posts;
+		$data['posts']          = array_slice($this->posts, 0, POST_LIMIT);
         $data['template_name']  = 'index';
 
         $content = $this->render_view_and_return($data);

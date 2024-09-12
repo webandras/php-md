@@ -15,3 +15,5 @@ define('LANGUAGES', array(
     'hu-hu' => 'Magyar',
     'lt-lt' => 'Lietuvių',
 ));
+
+define('POST_LIMIT', 10);
