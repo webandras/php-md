@@ -3,13 +3,13 @@
 if ($template_name !== 'single' && !isset($frontmatter)) {
     $description = $website_description;
     $title       = $website_name;
-    $url         = BASE_URL.get_language_segment($current_language_code).($template_name !== 'index' ? $template_name : '');
-    $image       = BASE_URL.'assets/images/static.jpg';
+    $url         = BASE_URL . get_language_segment($current_language_code) . ($template_name !== 'index' ? $template_name : '');
+    $image       = BASE_URL . 'assets/images/static.jpg';
 } else {
     $description = $frontmatter['excerpt'];
     $title       = $frontmatter['title'];
     $url         = $frontmatter['slug'];
-    $image       = BASE_URL.$frontmatter['cover_image'];
+    $image       = BASE_URL . $frontmatter['cover_image'];
 }
 ?>
 

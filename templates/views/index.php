@@ -31,12 +31,12 @@
 <body>
 
 <?php
-require $root_dir.'/templates/partials/header.php'; ?>
+require $root_dir . '/templates/partials/header.php'; ?>
 
 <main class="container">
 
     <?php
-    require $root_dir.'/templates/partials/introduction.php'; ?>
+    require $root_dir . '/templates/partials/introduction.php'; ?>
 
     <section>
         <h2><?= $newest_writings_text ?></h2>
@@ -60,9 +60,9 @@ require $root_dir.'/templates/partials/header.php'; ?>
 </main>
 
 <?php
-require $root_dir.'/templates/partials/footer.php'; ?>
+require $root_dir . '/templates/partials/footer.php'; ?>
 
-<script src="<?= BASE_URL.'assets/js/main.js' ?>"></script>
+<script src="<?= BASE_URL . 'assets/js/main.js' ?>"></script>
 
 </body>
 </html>

@@ -28,8 +28,8 @@ class PHP_MD extends PHP_MD_Base
     public function generate_posts(string $language = DEFAULT_LANGUAGE, array $data = []): array
     {
         $this->posts           = [];
-        $source_directory      = $this->root_dir.'/posts/'.$this->get_language_segment($language);
-        $destination_directory = $this->root_dir.'/public/posts/'.$this->get_language_segment($language);
+        $source_directory      = $this->root_dir . '/posts/' . $this->get_language_segment($language);
+        $destination_directory = $this->root_dir . '/public/posts/' . $this->get_language_segment($language);
         $files                 = glob($source_directory.'/*.md');
         $lc_time               = $this->get_lc_time($language);
 
@@ -53,10 +53,10 @@ class PHP_MD extends PHP_MD_Base
                     $lc_time
                 );
 
-                $this->posts[]       = $frontMatter;
-                $data['frontmatter'] = $frontMatter;
-                $data['content']     = $this->get_post_content($result);
-                $data['template_name']   = 'single';
+                $this->posts[]          = $frontMatter;
+                $data['frontmatter']    = $frontMatter;
+                $data['content']        = $this->get_post_content($result);
+                $data['template_name']  = 'single';
 
                 $content = $this->render_view_and_return($data);
 
@@ -78,9 +78,9 @@ class PHP_MD extends PHP_MD_Base
      */
     public function generate_index_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
-        $destination_directory = $this->root_dir.'/public/'.$this->get_language_segment($language);
-        $data['posts']         = $this->posts;
-        $data['template_name'] = 'index';
+        $destination_directory  = $this->root_dir.'/public/'.$this->get_language_segment($language);
+        $data['posts']          = $this->posts;
+        $data['template_name']  = 'index';
 
         $content = $this->render_view_and_return($data);
 
@@ -96,7 +96,7 @@ class PHP_MD extends PHP_MD_Base
      */
     public function generate_archive_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
-        $destination_directory = $this->root_dir.'/public/'.$this->get_language_segment($language);
+        $destination_directory  = $this->root_dir . '/public/' . $this->get_language_segment($language);
         $data['posts']          = $this->posts;
         $data['template_name']  = 'archive';
         $data['lc_time']        = $this->get_lc_time($language);
@@ -106,7 +106,7 @@ class PHP_MD extends PHP_MD_Base
             $year_month_groups = [];
             foreach ($this->posts as $post) {
                 $post_date  = new \DateTime($post['date_original'], new \DateTimeZone($data['timezone']));
-                $formatter     = $this->get_local_datetime_formatter($data['lc_time'], $data['timezone'], $data['pattern']);
+                $formatter  = $this->get_local_datetime_formatter($data['lc_time'], $data['timezone'], $data['pattern']);
 
                 $year_month_groups[$post_date->format('M Y')] = $formatter->format($post_date);
             }
@@ -130,8 +130,8 @@ class PHP_MD extends PHP_MD_Base
      */
     public function generate_404_page(string $language = DEFAULT_LANGUAGE, array $data = []): void
     {
-        $destination_directory = $this->root_dir.'/public/'.$this->get_language_segment($language);
-        $data['template_name'] = '404';
+        $destination_directory  = $this->root_dir . '/public/' . $this->get_language_segment($language);
+        $data['template_name']  = '404';
 
         $content = $this->render_view_and_return($data);
 

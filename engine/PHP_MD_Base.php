@@ -26,7 +26,8 @@ class PHP_MD_Base
     protected string $root_dir;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         // Define your configuration, if needed
         $markdownConfig = [];
 
@@ -51,8 +52,8 @@ class PHP_MD_Base
      *
      * @return string
      */
-    protected function get_post_content(RenderedContentWithFrontMatter $result
-    ): string {
+    protected function get_post_content(RenderedContentWithFrontMatter $result ): string
+    {
         return $result->getContent();
     }
 
@@ -64,8 +65,8 @@ class PHP_MD_Base
      *
      * @return array
      */
-    protected function get_post_front_matter(RenderedContentWithFrontMatter $result
-    ): array {
+    protected function get_post_front_matter(RenderedContentWithFrontMatter $result ): array
+    {
         return $result->getFrontMatter();
     }
 
@@ -88,8 +89,8 @@ class PHP_MD_Base
         string $timezone = DEFAULT_TIMEZONE,
         string $lc_time = 'en_GB'
     ) {
-        $front_matter['slug'] = BASE_URL.'posts/'. $this->get_language_segment($language) . $this->get_filename($filepath).'.html';
-        $datetime = $front_matter['date'].':00';
+        $front_matter['slug']   = BASE_URL . 'posts/' . $this->get_language_segment($language) . $this->get_filename($filepath).'.html';
+        $datetime               = $front_matter['date'].':00';
 
         try {
             $dt = date_create($datetime);
@@ -190,8 +191,8 @@ class PHP_MD_Base
         string $filePath = '',
         string $fileName = 'index'
     ): bool {
-        $filename             = ($filePath !== '') ? $this->get_filename($filePath) : $fileName;
-        $destination_filepath = $destination_directory.$filename.'.html';
+        $filename               = ($filePath !== '') ? $this->get_filename($filePath) : $fileName;
+        $destination_filepath   = $destination_directory . $filename . '.html';
 
         if (!is_dir($destination_directory)) {
             mkdir($destination_directory, 0755);
@@ -213,7 +214,7 @@ class PHP_MD_Base
         extract($data);
 
         ob_start();
-        require $this->root_dir.'/templates/views/' . $template_name . '.php';
+        require $this->root_dir . '/templates/views/' . $template_name . '.php';
         $content = ob_get_contents();
         ob_end_clean();
 

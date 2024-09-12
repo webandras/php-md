@@ -4,18 +4,19 @@ $time_start = microtime(true);
 
 // Get command line arguments (options)
 $short_options  = '';
-$long_options = ['env:'];
-$options = getopt($short_options, $long_options);
+$long_options   = ['env:'];
+$options        = getopt($short_options, $long_options);
+
 extract($options);
 settype($env, 'string');
 
 // Require all files here
-require __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/config/config.php';
-require_once __DIR__.'/config/localizations.php';
-require_once __DIR__.'/config/translations.php';
-require_once __DIR__.'/engine/helpers/helpers.php';
-require_once __DIR__.'/engine/PHP_MD.php';
+require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/config/localizations.php';
+require_once __DIR__ . '/config/translations.php';
+require_once __DIR__ . '/engine/helpers/helpers.php';
+require_once __DIR__ . '/engine/PHP_MD.php';
 
 // Instantiate the site generator class
 $phpmd = new PHP_MD();
