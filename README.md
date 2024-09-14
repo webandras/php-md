@@ -16,10 +16,18 @@ _Current version: 1.1.0_
 Generate the posts, the index page, and the archive page:
 
 ```php
-php generate.php --env=dev
+php generate.php --env=dev --force=1
 ```
 
 For production, use a value other that "dev" for the `env` argument.
+
+The `--force` option is optional.
+
+Without the **force** option, the builder will only generate the html for the markdown files modified since the last 
+build time (and for the new files too).
+
+The **force** option is useful when you want to re-generate all post html files (after a template change, for example).
+
 
 ## Config
 
@@ -55,6 +63,9 @@ The `netlify.toml` configuration file contains important properties:
 
 It tells Netlify the base path, the publish folder, and the command to run when building the website into the "public"
 folder.
+
+_Note: Add the `force=1` option to the command if needed!_
+
 
 ### netlify/build
 

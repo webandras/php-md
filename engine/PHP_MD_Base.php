@@ -26,6 +26,12 @@ class PHP_MD_Base
     protected string $root_dir;
 
 
+	/**
+	 * @var bool
+	 */
+	protected bool $force_build;
+
+
     public function __construct()
     {
         // Define your configuration, if needed
@@ -42,6 +48,7 @@ class PHP_MD_Base
         $this->converter = new MarkdownConverter($environment);
 
         $this->root_dir = dirname(__DIR__);
+	    $this->force_build = false;
     }
 
 
@@ -220,6 +227,21 @@ class PHP_MD_Base
 
         return $content;
     }
+
+
+	/**
+	 * @return int
+	 */
+	protected function get_build_time(): int {
+		$filepath = dirname(__DIR__).'/buildtime.txt';
+		$last_build_date = 0;
+
+		if (file_exists($filepath)) {
+			$last_build_date = (int) file_get_contents($filepath);
+		}
+
+		return $last_build_date;
+	}
 
 
 }
