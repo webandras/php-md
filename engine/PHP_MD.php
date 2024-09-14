@@ -46,6 +46,8 @@ class PHP_MD extends PHP_MD_Base
 				continue;
 			}
 
+			echo 'Post re-generated' . PHP_EOL;
+
             try {
                 $result = $this->converter->convert($markdown);
             } catch (CommonMarkException $ex) {
