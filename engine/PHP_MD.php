@@ -46,9 +46,6 @@ class PHP_MD extends PHP_MD_Base
 				continue;
 			}
 
-			//
-	        echo 'Content last changed: ' . date('F d Y H:i:s.', filemtime($filepath)) . PHP_EOL;
-
             try {
                 $result = $this->converter->convert($markdown);
             } catch (CommonMarkException $ex) {
