@@ -28,6 +28,11 @@ build time (and for the new files too).
 
 The **force** option is useful when you want to re-generate all post html files (after a template change, for example).
 
+_Note: Unfortunately, the generation of only modified posts won't work on Netlify. Your commit trigger (webhook from
+GitHub) the deployment, the buildbot will checkout your target branch, your files are copied into the container
+(which will be destroyed after the build process ends), so the file modification time will change. Moreover, it won't
+update the "buildtime.txt" file with the latest build time. Nevertheless, it works locally on your computer._
+
 
 ## Config
 
@@ -63,8 +68,6 @@ The `netlify.toml` configuration file contains important properties:
 
 It tells Netlify the base path, the publish folder, and the command to run when building the website into the "public"
 folder.
-
-_Note: Add the `force=1` option to the command if needed!_
 
 
 ### netlify/build
