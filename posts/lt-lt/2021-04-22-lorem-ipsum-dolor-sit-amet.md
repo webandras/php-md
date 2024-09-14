@@ -1,6 +1,6 @@
 ---
 author: András Gulácsi
-title: Lorem ipsum dolor sit amet
+title: Lorem ipsum dolor sit amet 2
 date: 2021-04-22 18:16
 excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue nisl, ultricies eu ex quis, bibendum iaculis neque. Integer blandit magna eget tempus ultricies.
 cover_image: assets/images/uploads/elephant-php-mascot.png
