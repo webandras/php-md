@@ -1,4 +1,4 @@
-# PHP-MD static site generator
+# PHP-MD Blog static site generator
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/95c7fae2-38c4-4aca-a24f-f5b77a327ecf/deploy-status)](https://app.netlify.com/sites/phpmd/deploys)
 
