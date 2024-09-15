@@ -33,7 +33,7 @@ require $root_dir . '/templates/partials/header.php'; ?>
 
 <main class="container">
     <section>
-        <h1 style="margin-bottom: 2rem;"><?= $writings_text ?></h1>
+        <h1 class="archive-title"><?= $writings_text ?></h1>
 
         <ul class="blog--archive">
             <?php
