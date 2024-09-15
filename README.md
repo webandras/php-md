@@ -4,7 +4,7 @@
 
 A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any hosting platforms.
 
-_Current version: 1.1.0_
+_Current version: 1.2.0_
 
 - Todo: Add search functionality
 - Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to
