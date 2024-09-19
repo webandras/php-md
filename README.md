@@ -4,7 +4,7 @@
 
 A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any hosting platforms.
 
-_Current version: 1.2.0_
+_Current version: 1.2.1_
 
 - Todo: Add search functionality
 - Todo: Make it possible to only generate html from the modified/new markdown posts (with an option of forcing to
@@ -52,6 +52,15 @@ The translation strings in an associative arrays are set in `config\translations
 The site generator main class (`PHP_MD`) is extendable via the `PHP_MD_Trait` trait (see the **extension** folder).
 Add the methods there to generate additional pages (like "contact us", or "about us" pages).
 The **extension** folder won't be touched in any future releases.
+
+## Update engine version
+
+Download the newest release in a zip file, extract it, overwrite the content of your project's engine folder.
+The `generate.php`, configuration files, the templates, and the styles won't be updated 99% of the time (_starting 
+from version number 1.2.1_).
+
+If there is a small change in any of the files outside the **engine** folder, there will be instructions which line 
+you should update. I am not planning to break the site builder with unnecessary rewrites, it is going to be version "1.x.x" forever.
 
 ## Publishing a website to Netlify
 
