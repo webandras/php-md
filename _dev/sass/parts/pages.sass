@@ -5,6 +5,10 @@ ol.post-list
     li
         margin-bottom: 2em
 
+        time.post-date
+            opacity: 0.70
+            font-size: 1rem
+
         img
             border-radius: 4px
             max-height: 400px
@@ -76,17 +80,31 @@ h1.archive-title
 .single
     article
         h1
-            padding-top: 1rem
+            padding-top: 0.25rem
             margin-bottom: 1rem
-            font-size: 48px
+            font-size: 40px
 
             @media screen and (max-width: 550px)
-                padding-top: 0.75rem
+                padding-top: 0.5rem
                 font-size: 34px
 
         p, ul, ol
             line-height: 1.65
             font-size: 18px
+
+        blockquote
+            margin-top: 2rem
+            margin-bottom: 2rem
+            margin-left: 0
+            padding-left: 1.5rem
+            border-left: 8px solid $primary-light
+            p
+                opacity: 0.9
+                font-size: 24px
+                font-style: italic
+
+                @media screen and (max-width: 550px)
+                    font-size: 22px
 
         p.meta
             color: #666

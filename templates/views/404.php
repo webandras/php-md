@@ -35,7 +35,7 @@
 <?php
 require $root_dir . '/templates/partials/header.php'; ?>
 
-<main class="container">
+<main class="container container-sm">
     <section class="page-404">
         <h1><?= $page_not_found_title_text ?></h1>
         <p><?= $page_not_found_description_text ?></p>

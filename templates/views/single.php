@@ -35,7 +35,7 @@
 <?php
 require $root_dir . '/templates/partials/header.php'; ?>
 
-<main class="container">
+<main class="container container-sm">
     <?php
     require $root_dir . '/templates/partials/breadcrumb.php'; ?>
     <article>

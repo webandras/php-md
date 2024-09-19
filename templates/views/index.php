@@ -33,7 +33,7 @@
 <?php
 require $root_dir . '/templates/partials/header.php'; ?>
 
-<main class="container">
+<main class="container container-sm">
 
     <?php
     require $root_dir . '/templates/partials/introduction.php'; ?>
@@ -44,7 +44,7 @@ require $root_dir . '/templates/partials/header.php'; ?>
             <?php
             foreach ($posts as $post) { ?>
                 <li>
-                    <time class="small"><?= $post['date'] ?></time>
+                    <time class="post-date"><?= $post['date'] ?></time>
                     <h3>
                         <a href="<?= $post['slug'] ?>"><?= $post['title'] ?></a>
                     </h3>

@@ -1,6 +1,6 @@
 header.header
     background-color: $white
-    box-shadow: 0 1px 3px #0000001a
+    border-bottom: 1px solid rgb(229, 231, 235)
 
     nav.container
         display: flex
@@ -11,6 +11,16 @@ header.header
         a
             display: flex
             align-items: center
+
+            &.logo-link
+                text-decoration: none
+                color: $darkgray
+
+                span
+                    text-decoration: none
+                    margin-left: 0.5rem
+                    font-size: 1.25rem
+                    font-weight: 500
 
         button#theme-toggle,
         button#toggle-menu

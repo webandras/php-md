@@ -31,7 +31,7 @@
 <?php
 require $root_dir . '/templates/partials/header.php'; ?>
 
-<main class="container">
+<main class="container container-sm">
     <section>
         <h1 class="archive-title"><?= $writings_text ?></h1>
 
