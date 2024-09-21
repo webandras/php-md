@@ -1,7 +1,5 @@
 # PHP-MD Blog static site generator
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/95c7fae2-38c4-4aca-a24f-f5b77a327ecf/deploy-status)](https://app.netlify.com/sites/phpmd/deploys)
-
 A PHP-based static site generator that uses pure PHP and Markdown. Deploy your website to any hosting platforms.
 
 _Current version: 1.2.1_
