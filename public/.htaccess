@@ -1,3 +1,6 @@
+# Change URL to your domain
+ErrorDocument 404 http://localhost/phpmd_blog/public/404.html
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
