@@ -4,7 +4,7 @@
 if ($env === 'dev') {
     define('BASE_URL', 'http://localhost/phpmd_blog/public/');
 } else {
-    define('BASE_URL', 'https://phpmd.netlify.app/');
+    define('BASE_URL', 'https://phpmd.webandras.hu/');
 }
 
 define('DEFAULT_DATE_FORMAT', 'Y-m-d H:i');
