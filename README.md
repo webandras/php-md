@@ -36,7 +36,7 @@ update the "buildtime.txt" file with the latest build time. Nevertheless, it wor
 
 The global settings are defined in `config\config.php`. Update BASE_URL to your url.
 The localization settings are in `config\localizations.php` for each language.
-The translation strings in an associative arrays are set in `config\translations.php` for each languages.
+The translation strings in an associative arrays are set in `config\translations.php` for each language.
 
 ## Data / Template structure
 
